@@ -24,7 +24,7 @@ const ThemeSwitch = () => {
         onChange={e => setTheme(e.target.value)}>
         <option value="system">System</option>
         <option value="dark">Dark</option>
-        <option value="light">Light</option>
+        <option value="light">Bright</option>
       </select>
     </div>
   );
