@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import GetImage from "@utils/getImage";
 import { myLoader } from "@utils/all";
+import { useRouter } from "next/router";
+import { cx } from "@utils/all";
 
 export default function Navbar(props) {
   const leftmenu = [
@@ -17,140 +19,166 @@ export default function Navbar(props) {
       href: "/about"
     },
     {
+      label: "Blogs",
+      href: "/blogs"
+    },
+    {
       label: "Contact",
       href: "/contact"
     }
   ];
+  const router = useRouter();
+  const route = router.route.toLocaleLowerCase();
 
-  const rightmenu = [
-    {
-      label: "Archive",
-      href: "/archive"
-    },
-    {
-      label: "Pro Version",
-      href: "https://stablo-pro.web3templates.com/",
-      external: true,
-      badge: "new"
-    },
-    {
-      label: "Download",
-      href: "https://web3templates.com/templates/stablo-minimal-blog-website-template",
-      external: true
-    }
-  ];
+  function giveBackLowerCase(passedRoute) {
+    if (passedRoute.href === route) {
+      return "text-sky-500";
+    } else return "text-gray-600";
+  }
 
-  const mobilemenu = [...leftmenu, ...rightmenu];
+  const mobilemenu = [...leftmenu];
 
   return (
-    <Container>
-      <nav>
-        <Disclosure>
-          {({ open }) => (
-            <>
-              <div className="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
-                <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
-                  {leftmenu.map((item, index) => (
-                    <Link href={item.href} key={index}>
-                      <a className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
-                        {item.label}
-                      </a>
-                    </Link>
-                  ))}
+    <section className="overflow-hidden">
+      <div className="flex items-center justify-between px-7 xl:px-40 py-5 lg:py-7 dark:bg-black bg-white">
+        <div className="w-auto">
+          <div className="flex flex-wrap items-center">
+            <div className="w-auto mr-14">
+              <a href="/">
+                <img
+                  src="https://discoverpps.org/img/mascot/301.jpg"
+                  alt=""
+                  className="w-12 h-12"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="w-auto">
+          <div className="flex flex-wrap items-center">
+            <div className="w-auto hidden lg:block">
+              <ul className="flex items-center mr-16">
+                <li className="mr-9 font-medium hover:text-gray-700">
+                  <a href="/">Home</a>
+                </li>
+                <li className="mr-9 font-medium hover:text-gray-700">
+                  <a href="/archive">Blogs</a>
+                </li>
+                <li className="mr-9 font-medium hover:text-gray-700">
+                  <a href="/about">About</a>
+                </li>
+              </ul>
+            </div>
+            <div className="w-auto lg:hidden">
+              <a href="#">
+                <svg
+                  className="navbar-burger text-indigo-600"
+                  width={51}
+                  height={51}
+                  viewBox="0 0 56 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <rect
+                    width={56}
+                    height={56}
+                    rx={28}
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M37 32H19M37 24H19"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="hidden navbar-menu fixed top-0 left-0 bottom-0 w-4/6 sm:max-w-xs z-50">
+        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80" />
+        <nav className="relative z-10 px-9 pt-8 bg-white h-full overflow-y-auto">
+          <div className="flex flex-wrap justify-between h-full">
+            <div className="w-full">
+              <div className="flex items-center justify-between -m-2">
+                <div className="w-auto p-2">
+                  <a className="inline-block" href="#">
+                    <img
+                      src="flaro-assets/logos/flaro-logo-black.svg"
+                      alt=""
+                    />
+                  </a>
                 </div>
-                <div className="flex items-center justify-between w-full md:w-auto">
-                  <Link href="/">
-                    <a className="w-28 dark:hidden">
-                      {props.logo ? (
-                        <Image
-                          {...GetImage(props.logo)}
-                          alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
-                          priority={true}
-                        />
-                      ) : (
-                        <span className="block text-center">
-                          Stablo
-                        </span>
-                      )}
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a className="hidden w-28 dark:block">
-                      {props.logoalt ? (
-                        <Image
-                          {...GetImage(props.logoalt)}
-                          alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
-                          priority={true}
-                        />
-                      ) : (
-                        <span className="block text-center">
-                          Stablo
-                        </span>
-                      )}
-                    </a>
-                  </Link>
-                  <Disclosure.Button
-                    aria-label="Toggle Menu"
-                    className="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300 ">
+                <div className="w-auto p-2">
+                  <a className="navbar-burger" href="#">
                     <svg
-                      className="w-6 h-6 fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24">
-                      {open && (
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                        />
-                      )}
-                      {!open && (
-                        <path
-                          fillRule="evenodd"
-                          d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                        />
-                      )}
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6 18L18 6M6 6L18 18"
+                        stroke="#111827"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
-                  </Disclosure.Button>
-                </div>
-
-                <div className="flex-col items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
-                  {rightmenu.map((item, index) => (
-                    <Link href={item.href} key={index}>
-                      <a
-                        className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
-                        target={item.external ? "_blank" : ""}
-                        rel={item.external ? "noopener" : ""}>
-                        <span> {item.label}</span>
-                        {item.badge && (
-                          <span className="bg-blue-100 text-blue-600 text-xs font-semibold ml-2 px-2 py-0.5 rounded dark:bg-cyan-200 dark:text-blue-800 ">
-                            {item.badge}
-                          </span>
-                        )}
-                      </a>
-                    </Link>
-                  ))}
+                  </a>
                 </div>
               </div>
-              <Disclosure.Panel>
-                <div className="flex flex-col items-center justify-start order-2 w-full md:hidden">
-                  {mobilemenu.map((item, index) => (
-                    <Link href={item.href} key={index}>
-                      <a
-                        className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
-                        target={item.external ? "_blank" : ""}
-                        rel={item.external ? "noopener" : ""}>
-                        {item.label}
-                      </a>
-                    </Link>
-                  ))}
+            </div>
+            <div className="flex flex-col justify-center py-16 w-full">
+              <ul>
+                <li className="mb-12">
+                  <a
+                    className="font-medium hover:text-gray-700"
+                    href="#">
+                    Features
+                  </a>
+                </li>
+                <li className="mb-12">
+                  <a
+                    className="font-medium hover:text-gray-700"
+                    href="#">
+                    Solutions
+                  </a>
+                </li>
+                <li className="mb-12">
+                  <a
+                    className="font-medium hover:text-gray-700"
+                    href="#">
+                    Resources
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="font-medium hover:text-gray-700"
+                    href="#">
+                    Pricing
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="flex flex-col justify-end w-full pb-8">
+              <div className="flex flex-wrap">
+                <div className="w-full">
+                  <div className="block">
+                    <button
+                      className="py-3 px-5 w-full text-white font-semibold rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
+                      type="button">
+                      Try 14 Days Free Trial
+                    </button>
+                  </div>
                 </div>
-              </Disclosure.Panel>
-            </>
-          )}
-        </Disclosure>
-      </nav>
-    </Container>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
   );
 }

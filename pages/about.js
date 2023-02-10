@@ -7,55 +7,61 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function About({ authors, siteconfig }) {
+  console.log(authors);
+  const imageProps = authors?.image ? GetImage(author.image) : null;
+
   return (
     <Layout {...siteconfig}>
-      <Container>
-        <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-          About
-        </h1>
-        <div className="text-center">
-          <p className="text-lg">We are a small passionate team.</p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-5 mt-6 mb-16 md:mt-16 md:mb-32 md:gap-16">
-          {authors.slice(0, 3).map(author => {
-            const { width, height, ...imgprops } = GetImage(
-              author?.image
-            );
-            return (
-              <div
-                key={author._id}
-                className="relative overflow-hidden rounded-md aspect-square odd:translate-y-10 odd:md:translate-y-16">
-                <Image
-                  {...imgprops}
-                  alt={author.name || " "}
-                  layout="fill"
-                  objectFit="cover"
-                  sizes="(max-width: 320px) 100vw, 320px"
-                />
+      <section
+        className="py-24 bg-white"
+        style={{
+          backgroundImage:
+            'url("flex-ui-assets/elements/pattern-white.svg")',
+          backgroundPosition: "center"
+        }}>
+        <div className="container px-4 mx-auto">
+          <div className="flex flex-wrap items-center justify-between -mx-4 mb-16">
+            <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+              <div className="max-w-md">
+                <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-green-500 bg-green-100 font-medium uppercase rounded-9xl">
+                  Team
+                </span>
+                <h3 className="mb-4 text-4xl md:text-5xl font-bold tracking-tighter">
+                  Meet our team
+                </h3>
+                <p className="text-lg md:text-xl text-coolGray-500 font-medium">
+                  Highly professional and capable team of developers
+                  and designers.
+                </p>
               </div>
-            );
-          })}
+            </div>
+          </div>
+          <div className="flex  flex-wrap -mx-4">
+            {authors.map(author => {
+              const { ...imgprops } = GetImage(author?.image);
+              return (
+                <div
+                  key={author._id}
+                  className="w-full md:w-1/2 lg:w-1/3 px-4 mb-12">
+                  <div className="max-w-screen-lg block	 mx-auto">
+                    <img
+                      {...imgprops}
+                      alt={author.name || " "}
+                      className="w-full mb-5"
+                    />
+                    <h3 className="mb-2 text-3xl md:text-4xl leading-tight font-semibold">
+                      {author.name}
+                    </h3>
+                    <h1 className="text-lg font-medium text-green-500">
+                      Creator
+                    </h1>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-
-        <div className="mx-auto prose text-center dark:prose-invert mt-14">
-          <p>
-            We provide real-time connectivity to enable software
-            providers and financial institutions to build integrated
-            products for their small business customers.
-          </p>
-          <p>
-            Our API infrastructure is leveraged by clients ranging
-            from lenders to corporate card providers and business
-            forecasting tools, with use cases including automatic
-            reconciliation, business dashboarding, and loan
-            decisioning.
-          </p>
-          <p>
-            <Link href="/contact">Get in touch</Link>
-          </p>
-        </div>
-      </Container>
+      </section>
     </Layout>
   );
 }
