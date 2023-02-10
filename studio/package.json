@@ -1,8 +1,8 @@
 {
-  "name": "stablo",
+  "name": "blog",
   "private": true,
   "version": "1.0.2",
-  "description": "Stablo is a JamStack Blog template built with Next.js, Tailwind CSS & Sanity CMS",
+  "description": "blog studio for Pittsburgh Allderdice High School",
   "main": "package.json",
   "author": "Surjith S M <surjithctly@gmail.com>",
   "license": "UNLICENSED",
