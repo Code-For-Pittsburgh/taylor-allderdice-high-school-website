@@ -55,48 +55,49 @@ export default function Post(props) {
           />
           <section className="pt-24 pb-28 bg-white dark:bg-black overflow-hidden">
             <div className="container px-4 mx-auto">
-              <h2 className="mb-7 text-6xl md:text-8xl xl:text-10xl font-bold font-heading text-center tracking-px-n leading-none">
-                Say hi to new data
+              <h2 className="mb-7 text-6xl md:text-8xl xl:text-10xl font-bold font-heading text-center tracking-px-n leading-none text-green-500">
+                Say hi to new blogs!
               </h2>
-              <p className="mb-14 text-lg text-gray-600 font-medium text-center mx-auto md:max-w-2xl">
-                Amet minim mollit non deserunt ullamco est sit aliqua
-                dolor do amet sint. Velit officia consequat duis enim
-                velit mollit. Exercitation veniam consequat.
+              <p className="mb-14 text-lg text-black dark:text-white font-medium text-center mx-auto md:max-w-2xl">
+                This site is created and run by "Code for Pittsburgh.
+                It is a nonprofit organization that is dedicated to
+                improving the quality of life in Pittsburgh by using
+                technology to solve problems.
               </p>
               <div className="flex justify-center">
                 <div className="inline-block">
                   <img
                     className="mb-11 mx-auto transform hover:translate-y-3 transition ease-in-out duration-1000"
-                    src="https://shuffle.dev/flaro-assets/images/features/data.png"
+                    src="https://nextjs.org/static/blog/next-13/twitter-card.png"
                     alt=""
                   />
                   <ul className="flex flex-wrap justify-center -m-8">
                     <li className="w-auto p-8">
                       <a
-                        className="text-sm  text-gray-400 hover:text-gray-500 font-semibold uppercase tracking-px"
+                        className="text-sm  text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
                         href="#">
-                        Real-time Analytics
+                        Fast and Secure
                       </a>
                     </li>
                     <li className="w-auto p-8">
                       <a
-                        className="text-sm text-gray-400 hover:text-gray-500 font-semibold uppercase tracking-px"
+                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
                         href="#">
-                        Easy Projects
+                        Easy to Use
                       </a>
                     </li>
                     <li className="w-auto p-8">
                       <a
-                        className="text-sm text-gray-400 hover:text-gray-500 font-semibold uppercase tracking-px"
-                        href="#">
-                        Email Notification
-                      </a>
-                    </li>
-                    <li className="w-auto p-8">
-                      <a
-                        className="text-sm text-gray-400 hover:text-gray-500 font-semibold uppercase tracking-px"
+                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
                         href="#">
                         Cloud Servers
+                      </a>
+                    </li>
+                    <li className="w-auto p-8">
+                      <a
+                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
+                        href="#">
+                        24/7 Support
                       </a>
                     </li>
                   </ul>
@@ -113,44 +114,43 @@ export default function Post(props) {
             }}>
             <div className="container px-4 mx-auto">
               <div className="text-center">
-                <h3 className="mb-4 text-4xl md:text-5xl text-coolGray-900 font-bold tracking-tighter">
-                  We believe in the power of data
+                <h3 className="mb-4 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
+                  We believe in the power of technology
                 </h3>
-                <p className="mb-16 xl:mb-24 mx-auto text-lg md:text-xl text-coolGray-500 font-medium max-w-4xl">
-                  Flex is the only business platform that lets you run
-                  your business on one platform, seamlessly across all
-                  digital channels.
+                <p className="mb-16 xl:mb-24 mx-auto text-lg md:text-xl  text-black dark:text-white font-medium max-w-4xl">
+                  This website is a blog platform that lets you run
+                  your blog on one platform.
                 </p>
                 <div className="flex flex-wrap justify-center -mx-4">
                   <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl text-coolGray-900 font-bold tracking-tighter">
+                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
                       235.000
                     </h2>
-                    <p className="text-lg md:text-xl text-coolGray-500 font-medium">
+                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
                       Projects completed
                     </p>
                   </div>
                   <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl text-coolGray-900 font-bold tracking-tighter">
+                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
                       $10m
                     </h2>
-                    <p className="text-lg md:text-xl text-coolGray-500 font-medium">
+                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
                       APR
                     </p>
                   </div>
                   <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl text-coolGray-900 font-bold tracking-tighter">
+                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
                       +50.000
                     </h2>
-                    <p className="text-lg md:text-xl text-coolGray-500 font-medium">
+                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
                       Hours Saved Annually
                     </p>
                   </div>
                   <div className="w-full md:w-1/3 lg:w-1/4 px-4">
-                    <h2 className="mb-2 text-4xl md:text-5xl text-coolGray-900 font-bold tracking-tighter">
+                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
                       3.500
                     </h2>
-                    <p className="text-lg md:text-xl text-coolGray-500 font-medium">
+                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
                       Unique Users
                     </p>
                   </div>
@@ -160,7 +160,7 @@ export default function Post(props) {
           </section>
 
           <div className="md:max-w-5xl bg-white dark:bg-black mx-auto mb-2 md:mb-12 text-center">
-            <h3 className="mb-4 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
+            <h3 className="mb-4 text-3xl md:text-5xl leading-tight  text-black dark:text-white font-bold tracking-tighter">
               Our latest posts
             </h3>
           </div>

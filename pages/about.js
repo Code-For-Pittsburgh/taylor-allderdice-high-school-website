@@ -13,7 +13,7 @@ export default function About({ authors, siteconfig }) {
   return (
     <Layout {...siteconfig}>
       <section
-        className="py-24 bg-white"
+        className="py-24 bg-white dark:bg-black"
         style={{
           backgroundImage:
             'url("flex-ui-assets/elements/pattern-white.svg")',
@@ -26,7 +26,7 @@ export default function About({ authors, siteconfig }) {
                 <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-green-500 bg-green-100 font-medium uppercase rounded-9xl">
                   Team
                 </span>
-                <h3 className="mb-4 text-4xl md:text-5xl font-bold tracking-tighter">
+                <h3 className="mb-4 text-4xl md:text-5xl font-bold tracking-tighte text-black dark:text-white">
                   Meet our team
                 </h3>
                 <p className="text-lg md:text-xl text-coolGray-500 font-medium">
@@ -49,7 +49,7 @@ export default function About({ authors, siteconfig }) {
                       alt={author.name || " "}
                       className="w-full mb-5"
                     />
-                    <h3 className="mb-2 text-3xl md:text-4xl leading-tight font-semibold">
+                    <h3 className="mb-2 text-3xl md:text-4xl leading-tight font-semibold text-black dark:text-white">
                       {author.name}
                     </h3>
                     <h1 className="text-lg font-medium text-green-500">
