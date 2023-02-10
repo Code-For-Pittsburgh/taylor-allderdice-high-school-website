@@ -59,7 +59,7 @@ export default function Post(props) {
                 Say hi to new blogs!
               </h2>
               <p className="mb-14 text-lg text-black dark:text-white font-medium text-center mx-auto md:max-w-2xl">
-                This site is created and run by "Code for Pittsburgh.
+                This site is created and run by Code for Pittsburgh.
                 It is a nonprofit organization that is dedicated to
                 improving the quality of life in Pittsburgh by using
                 technology to solve problems.
