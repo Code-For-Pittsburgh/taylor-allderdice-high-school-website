@@ -1,12 +1,12 @@
 {
   "root": true,
+  "api": {
+    "projectId": "yftjdsc3",
+    "dataset": "production"
+  },
   "project": {
     "name": "Pittsburgh Allderdice High School",
     "basePath": "/studio"
-  },
-  "api": {
-    "projectId": "",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
@@ -22,7 +22,8 @@
       ]
     }
   },
-  "parts": [{
+  "parts": [
+    {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
     },

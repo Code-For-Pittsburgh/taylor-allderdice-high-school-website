@@ -53,7 +53,7 @@ export default function Post(props) {
               cardType: "summary_large_image"
             }}
           />
-          <section className="pt-24 pb-28 bg-white dark:bg-black overflow-hidden">
+          <section className="pt-24 pb-16 bg-white dark:bg-black overflow-hidden">
             <div className="container px-4 mx-auto">
               <h2 className="mb-7 text-6xl md:text-8xl xl:text-10xl font-bold font-heading text-center tracking-px-n leading-none text-green-500">
                 Say hi to new blogs!
@@ -67,8 +67,8 @@ export default function Post(props) {
               <div className="flex justify-center">
                 <div className="inline-block">
                   <img
-                    className="mb-11 mx-auto transform hover:translate-y-3 transition ease-in-out duration-1000"
-                    src="https://nextjs.org/static/blog/next-13/twitter-card.png"
+                    className="mb-11 mx-auto transform hover:translate-y-3 transition ease-in-out duration-1000 rounded-md	"
+                    src="https://www.pittsburghmagazine.com/content/uploads/data-import/1d64829b/TAnow.jpg"
                     alt=""
                   />
                   <ul className="flex flex-wrap justify-center -m-8">
@@ -105,53 +105,36 @@ export default function Post(props) {
               </div>
             </div>
           </section>
-          <section
-            className="py-20 xl:pt-24 xl:pb-32 bg-white dark:bg-black"
-            style={{
-              backgroundImage:
-                'url("flex-ui-assets/elements/pattern-white.svg")',
-              backgroundPosition: "center"
-            }}>
+          <section className="py-10 bg-white dark:bg-black overflow-hidden">
             <div className="container px-4 mx-auto">
-              <div className="text-center">
-                <h3 className="mb-4 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
-                  We believe in the power of technology
-                </h3>
-                <p className="mb-16 xl:mb-24 mx-auto text-lg md:text-xl  text-black dark:text-white font-medium max-w-4xl">
-                  This website is a blog platform that lets you run
-                  your blog on one platform.
-                </p>
-                <div className="flex flex-wrap justify-center -mx-4">
-                  <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
-                      235.000
+              <div className="flex flex-wrap max-w-5xl mx-auto -m-3">
+                <div className="w-full md:w-1/3 p-3">
+                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
+                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
+                      9
                     </h2>
-                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
-                      Projects completed
+                    <p className="text-black dark:text-white font-medium leading-relaxed">
+                      Dedicated Computer Labs
                     </p>
                   </div>
-                  <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
-                      $10m
+                </div>
+                <div className="w-full md:w-1/3 p-3">
+                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
+                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
+                      16
                     </h2>
-                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
-                      APR
+                    <p className="text-black dark:text-white font-medium leading-relaxed">
+                      CTE Labs
                     </p>
                   </div>
-                  <div className="w-full md:w-1/3 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
-                      +50.000
+                </div>
+                <div className="w-full md:w-1/3 p-3">
+                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
+                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
+                      1,400+
                     </h2>
-                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
-                      Hours Saved Annually
-                    </p>
-                  </div>
-                  <div className="w-full md:w-1/3 lg:w-1/4 px-4">
-                    <h2 className="mb-2 text-4xl md:text-5xl  text-black dark:text-white font-bold tracking-tighter">
-                      3.500
-                    </h2>
-                    <p className="text-lg md:text-xl  text-black dark:text-white font-medium">
-                      Unique Users
+                    <p className="text-black dark:text-white font-medium leading-relaxed">
+                      Students
                     </p>
                   </div>
                 </div>
