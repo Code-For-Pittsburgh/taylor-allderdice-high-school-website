@@ -8,6 +8,7 @@ import Container from "@components/container";
 // import Categories from "@components/categories";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "@lib/sanity";
+import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
@@ -30,7 +31,7 @@ export default function Post(props) {
   //console.log(posts);
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
-    : "none";
+    : defaultOG.src;
   return (
     <>
       {posts && siteConfig && (
@@ -51,7 +52,7 @@ export default function Post(props) {
                   alt: ""
                 }
               ],
-              site_name: "Stablo"
+              site_name: "Code for Pitsburgh"
             }}
             twitter={{
               cardType: "summary_large_image"
