@@ -16,7 +16,7 @@ export default function PostList({ post, aspect, preloadImage }) {
 
   return (
     <>
-      <div className="w-full md:w-1/2 px-4 mb-8">
+      <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-12">
         <a
           className="block mb-6 overflow-hidden rounded-md"
           href={`/post/${post.slug.current}`}>

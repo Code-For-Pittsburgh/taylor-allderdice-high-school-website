@@ -8,6 +8,7 @@ import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
 import CategoryLabel from "@components/blog/category";
 import RecentHome from "@components/recenthome";
+import MainArticle from "@components/mainhero";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -19,6 +20,7 @@ export default function Post(props) {
     initialData: postdata,
     enabled: preview || router.query.preview !== undefined
   });
+  console.log(posts);
 
   const { data: siteConfig } = usePreviewSubscription(configQuery, {
     initialData: siteconfig,
@@ -54,96 +56,8 @@ export default function Post(props) {
               cardType: "summary_large_image"
             }}
           />
-          <section className="pt-24 pb-16 bg-white dark:bg-black overflow-hidden">
-            <div className="container px-4 mx-auto">
-              <h2 className="mb-7 text-6xl md:text-8xl xl:text-10xl font-bold font-heading text-center tracking-px-n leading-none text-green-500">
-                Say hi to new blogs!
-              </h2>
-              <p className="mb-14 text-lg text-black dark:text-white font-medium text-center mx-auto md:max-w-2xl">
-                This site is created and run by Code for Pittsburgh.
-                It is a nonprofit organization that is dedicated to
-                improving the quality of life in Pittsburgh by using
-                technology to solve problems.
-              </p>
-              <div className="flex justify-center">
-                <div className="inline-block">
-                  <img
-                    className="mb-11 mx-auto transform hover:translate-y-3 transition ease-in-out duration-1000 rounded-md	"
-                    src="https://www.pittsburghmagazine.com/content/uploads/data-import/1d64829b/TAnow.jpg"
-                    alt=""
-                  />
-                  <ul className="flex flex-wrap justify-center -m-8">
-                    <li className="w-auto p-8">
-                      <a
-                        className="text-sm  text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
-                        href="#">
-                        Fast and Secure
-                      </a>
-                    </li>
-                    <li className="w-auto p-8">
-                      <a
-                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
-                        href="#">
-                        Easy to Use
-                      </a>
-                    </li>
-                    <li className="w-auto p-8">
-                      <a
-                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
-                        href="#">
-                        Cloud Servers
-                      </a>
-                    </li>
-                    <li className="w-auto p-8">
-                      <a
-                        className="text-sm text-green-400 hover:text-green-500 font-semibold uppercase tracking-px"
-                        href="#">
-                        24/7 Support
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="py-10 bg-white dark:bg-black overflow-hidden">
-            <div className="container px-4 mx-auto">
-              <div className="flex flex-wrap max-w-5xl mx-auto -m-3">
-                <div className="w-full md:w-1/3 p-3">
-                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
-                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
-                      9
-                    </h2>
-                    <p className="text-black dark:text-white font-medium leading-relaxed">
-                      Dedicated Computer Labs
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full md:w-1/3 p-3">
-                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
-                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
-                      16
-                    </h2>
-                    <p className="text-black dark:text-white font-medium leading-relaxed">
-                      CTE Labs
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full md:w-1/3 p-3">
-                  <div className="py-8 px-12 h-full text-center bg-white dark:bg-black rounded-xl">
-                    <h2 className="mb-3 text-3xl md:text-5xl xl:text-6xl text-black dark:text-green-500 text-center font-bold font-heading tracking-px-n leading-none">
-                      1,400+
-                    </h2>
-                    <p className="text-black dark:text-white font-medium leading-relaxed">
-                      Students
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
-          <div className="md:max-w-5xl bg-white dark:bg-black mx-auto mb-2 md:mb-12 text-center">
+          {/* <div className="md:max-w-5xl bg-white dark:bg-black mx-auto mb-2 md:mb-12 text-center">
             <h3 className="mb-4 text-3xl md:text-5xl leading-tight  text-black dark:text-white font-bold tracking-tighter">
               Our latest posts
             </h3>
@@ -178,8 +92,20 @@ export default function Post(props) {
                 </svg>
               </a>
             </div>
+          </section> */}
+
+          {/* <RecentHome data={posts} /> */}
+          <MainArticle data={posts.slice(0, 1)} />
+
+          <section className="py-20">
+            <div className="container px-4 mx-auto">
+              <div className="flex flex-wrap -mx-4 -mb-4">
+                <PostList post={posts[0]} aspect="square" />
+                <PostList post={posts[1]} aspect="square" />
+                <PostList post={posts[2]} aspect="square" />
+              </div>
+            </div>
           </section>
-          <RecentHome data={posts} />
         </Layout>
       )}
     </>
