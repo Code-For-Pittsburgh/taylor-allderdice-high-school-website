@@ -8,7 +8,6 @@ import Container from "@components/container";
 // import Categories from "@components/categories";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "@lib/sanity";
-import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
@@ -31,7 +30,7 @@ export default function Post(props) {
   //console.log(posts);
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
+    : "none";
   return (
     <>
       {posts && siteConfig && (

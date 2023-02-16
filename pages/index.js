@@ -3,10 +3,11 @@ import Layout from "@components/layout";
 import Container from "@components/container";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "@lib/sanity";
-import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
+import CategoryLabel from "@components/blog/category";
+import RecentHome from "@components/recenthome";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -26,7 +27,7 @@ export default function Post(props) {
   //console.log(posts);
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
+    : "none";
   return (
     <>
       {posts && siteConfig && (
@@ -178,6 +179,7 @@ export default function Post(props) {
               </a>
             </div>
           </section>
+          <RecentHome data={posts} />
         </Layout>
       )}
     </>

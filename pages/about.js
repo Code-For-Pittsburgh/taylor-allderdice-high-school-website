@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function About({ authors, siteconfig }) {
-  console.log(authors);
   const imageProps = authors?.image ? GetImage(author.image) : null;
 
   return (

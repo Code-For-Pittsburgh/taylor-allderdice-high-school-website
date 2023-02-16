@@ -13,7 +13,6 @@ import ErrorPage from "next/error";
 import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
 import { NextSeo } from "next-seo";
-import defaultOG from "/public/img/opengraph.jpg";
 
 import { singlequery, configQuery, pathquery } from "@lib/groq";
 import CategoryLabel from "@components/blog/category";
@@ -49,7 +48,7 @@ export default function Post(props) {
 
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
+    : "none";
 
   return (
     <>
