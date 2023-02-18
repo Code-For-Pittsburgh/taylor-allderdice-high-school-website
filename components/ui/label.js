@@ -9,10 +9,8 @@ export default function Label(props) {
     pink: "text-pink-600"
   };
   return (
-    <a
-      className="inline-block py-1 text-xs leading-5 text-green-500 hover:text-green-600 font-bold uppercase"
-      href="#">
+    <span className="inline-block py-1 text-xs leading-5 text-green-500 hover:text-green-600 font-bold uppercase">
       #{props.children}
-    </a>
+    </span>
   );
 }

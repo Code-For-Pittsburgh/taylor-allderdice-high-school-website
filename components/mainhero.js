@@ -4,7 +4,6 @@ import GetImage from "@utils/getImage";
 
 export default function MainArticle(props) {
   const data = props.data;
-  console.log(data);
 
   const imageProps = data[0]?.mainImage
     ? GetImage(data[0].mainImage)
@@ -17,12 +16,14 @@ export default function MainArticle(props) {
           className={`flex  ${
             props.reverse ? "flex-row-reverse" : ""
           } flex-wrap -mx-4`}>
-          <div className="w-full lg:w-1/2 px-4 mb-14 lg:mb-0">
-            <img
-              className="block mx-auto"
-              src={imageProps.src}
-              alt=""
-            />
+          <div className="w-full lg:w-1/2 px-4 mb-14 lg:mb-0 m ">
+            {imageProps && (
+              <img
+                className="block mx-auto object-contain max-h-96	rounded "
+                src={imageProps.src}
+                alt=""
+              />
+            )}
           </div>
           <div className="w-full lg:w-1/2 px-4">
             <div className="lg:max-w-md mx-auto">
