@@ -100,9 +100,9 @@ export default function Post(props) {
           <section className="py-20">
             <div className="container px-4 mx-auto">
               <div className="flex flex-wrap -mx-4 -mb-4">
-                <PostList post={posts[0]} aspect="square" />
-                <PostList post={posts[1]} aspect="square" />
-                <PostList post={posts[2]} aspect="square" />
+                {posts.slice(1).map((post, index) => (
+                  <PostList key={index} post={post} aspect="square" />
+                ))}
               </div>
             </div>
           </section>

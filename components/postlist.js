@@ -17,11 +17,34 @@ export default function PostList({ post, aspect, preloadImage }) {
   return (
     <>
       <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-12">
-        <a
-          className="block mb-6 overflow-hidden rounded-md"
-          href={`/post/${post.slug.current}`}>
-          <img className="w-full" src={imageProps.src} alt="alt" />
-        </a>
+        <div
+          className={
+            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105 aspect-video mb-4"
+          }>
+          <Link href={`/post/${post.slug.current}`}>
+            <a>
+              {imageProps ? (
+                <Image
+                  src={imageProps.src}
+                  loader={imageProps.loader}
+                  blurDataURL={imageProps.blurDataURL}
+                  alt={post.mainImage.alt || "Thumbnail"}
+                  placeholder="blur"
+                  sizes="80vw"
+                  //sizes="(max-width: 640px) 90vw, 480px"
+                  layout="fill"
+                  objectFit="cover"
+                  priority={preloadImage ? true : false}
+                  className="transition-all"
+                />
+              ) : (
+                <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                  <PhotographIcon />
+                </span>
+              )}
+            </a>
+          </Link>
+        </div>
         <div className="mb-4">
           <CategoryLabel categories={post.categories} />
         </div>
