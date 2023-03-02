@@ -50,7 +50,7 @@ export default function Post(props) {
                   alt: ""
                 }
               ],
-              site_name: "Stablo"
+              site_name: "Taylor Allerdice"
             }}
             twitter={{
               cardType: "summary_large_image"
