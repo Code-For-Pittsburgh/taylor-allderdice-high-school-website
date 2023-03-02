@@ -17,17 +17,21 @@ export default function MainArticle(props) {
             props.reverse ? "flex-row-reverse" : ""
           } flex-wrap -mx-4`}>
           <div className="w-full lg:w-1/2 px-4 mb-14 lg:mb-0 m ">
-            {imageProps && (
-              <img
-                className="block mx-auto object-contain max-h-96	rounded "
-                src={imageProps.src}
-                alt=""
-              />
-            )}
+            <a href={`/post/${data[0].slug.current}`}>
+              {imageProps && (
+                <img
+                  className="block mx-auto object-contain max-h-96	rounded "
+                  src={imageProps.src}
+                  alt=""
+                />
+              )}
+            </a>
           </div>
           <div className="w-full lg:w-1/2 px-4">
             <div className="lg:max-w-md mx-auto">
-              <a className="inline-block mb-2 text-3xl text-black dark:text-white leading-tight text-coolGray-800  hover:text-coolGray-900 font-bold hover:underline">
+              <a
+                href={`/post/${data[0].slug.current}`}
+                className="inline-block mb-2 text-3xl text-black dark:text-white leading-tight text-coolGray-800  hover:text-coolGray-900 font-bold hover:underline">
                 {data[0].title}
               </a>
               <a
