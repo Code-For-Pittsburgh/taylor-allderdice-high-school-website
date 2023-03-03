@@ -35,12 +35,14 @@ export default {
       name: "author",
       title: "Author",
       type: "reference",
-      to: { type: "author" }
+      to: { type: "author" },
+      validation: Rule => Rule.required()
     },
     {
       name: "mainImage",
       title: "Main image",
       type: "image",
+      validation: Rule => Rule.required(),
       fields: [
         // {
         //   name: "caption",
