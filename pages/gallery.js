@@ -63,6 +63,7 @@ export default function Gallery(props) {
             <div className="columns-1 md:columns-3 lg:columns-3">
               {postdata.map(post => (
                 <div
+                  key={post._id}
                   className="relative mb-4 before:content-[''] 
                 before:rounded-md before:absolute before:inset-0 before:bg-black before:bg-opacity-20">
                   <img
