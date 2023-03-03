@@ -67,6 +67,9 @@ export default function Navbar(props) {
                 <li className="mr-9 font-medium hover:text-gray-700">
                   <a href="/about">About</a>
                 </li>
+                <li className="mr-9 font-medium hover:text-gray-700">
+                  <a href="/gallery">Gallery</a>
+                </li>
               </ul>
             </div>
             <div className="w-auto lg:hidden">
