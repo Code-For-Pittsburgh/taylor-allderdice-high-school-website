@@ -48,7 +48,6 @@ export default function About({ authors, siteconfig }) {
                     </h3>
                     <h1 className="text-lg font-medium text-green-500">
                       {(author.role + "").toUpperCase()}
-                      {console.log(author.role)}
                     </h1>
                   </div>
                 </div>

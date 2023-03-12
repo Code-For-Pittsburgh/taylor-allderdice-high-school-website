@@ -16,7 +16,7 @@ export default function PostList({ post, aspect, preloadImage }) {
 
   return (
     <>
-      <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-12">
+      <div className="w-full md:w-1/2 lg:w-1/2 px-4 mb-12	relative">
         <div
           className={
             "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105 aspect-video mb-4"
@@ -55,15 +55,15 @@ export default function PostList({ post, aspect, preloadImage }) {
           {format(parseISO(post.publishedAt), "MMMM do, yyyy")}
         </a>
         <a
-          className="inline-block mb-4 text-2xl text-black dark:text-white leading-tight text-coolGray-800  hover:text-coolGray-900 font-bold hover:underline"
+          className="inline-block mb-4 text-xl text-black dark:text-white leading-tight text-coolGray-800  hover:text-coolGray-900 font-bold hover:underline"
           href={`/post/${post.slug.current}`}>
           {post.title}
         </a>
-        <p className="mb-4 text-base md:text-lg text-white-400 font-medium">
+        <p className="mb-10 text-base md:text-lg text-white-400 font-medium">
           {post.excerpt}
         </p>
         <a
-          className="inline-flex items-center text-base md:text-lg text-green-500 hover:text-green-600 font-semibold"
+          className="absolute bottom-0 inline-flex items-center text-base md:text-lg text-green-500 hover:text-green-600 font-semibold"
           href={`/post/${post.slug.current}`}>
           <span className="mr-3">Read More</span>
           <svg

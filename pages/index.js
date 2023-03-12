@@ -20,7 +20,6 @@ export default function Post(props) {
     initialData: postdata,
     enabled: preview || router.query.preview !== undefined
   });
-  console.log(posts);
 
   const { data: siteConfig } = usePreviewSubscription(configQuery, {
     initialData: siteconfig,
@@ -95,17 +94,68 @@ export default function Post(props) {
           </section> */}
 
           {/* <RecentHome data={posts} /> */}
-          <MainArticle data={posts.slice(0, 1)} />
 
-          <section className="py-20">
-            <div className="container px-4 mx-auto">
-              <div className="flex flex-wrap -mx-4 -mb-4">
-                {posts.slice(1).map((post, index) => (
-                  <PostList key={index} post={post} aspect="square" />
-                ))}
+          <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
+            <div className="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
+              <div className="flex flex-row flex-wrap -mx-3 mx-auto">
+                <MainArticle data={posts.slice(0, 1)} />
+                <section className="py-20">
+                  <div className="container px-4 mx-auto">
+                    <div className="flex flex-wrap -mx-4 -mb-4">
+                      {posts.slice(1).map((post, index) => (
+                        <PostList
+                          key={index}
+                          post={post}
+                          aspect="square"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
-          </section>
+            <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
+              <div
+                className="w-full bg-white sticky top-2
+              dark:bg-black shadow-lg rounded-lg overflow-hidden ring-2 ring-zinc-800">
+                <div
+                  className="
+                 ">
+                  <div
+                    className="p-4
+                   border-gray-100">
+                    <h2 className="text-3xl font-bold text-black dark:text-white">
+                      Featured Posts
+                    </h2>
+                  </div>
+                  <ul className="post-number">
+                    {posts.map((post, index) => (
+                      <li
+                        className="ring-1 ring-zinc-800 border-gray-100
+                        hover:bg-gray-100 dark:hover:bg-gray-800
+                        "
+                        key={index}>
+                        <a
+                          className="block p-4"
+                          href={`/post/${post.slug.current}`}>
+                          <div className="flex flex-row flex-wrap items-center">
+                            <div className="w-full">
+                              <h1
+                                className="text-sm 
+                              dark:text-gray-100
+                              ">
+                                {post.title}
+                              </h1>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </Layout>
       )}
     </>

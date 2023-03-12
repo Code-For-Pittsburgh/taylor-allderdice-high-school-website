@@ -14,7 +14,6 @@ import GetImage from "@utils/getImage";
 
 export default function Gallery(props) {
   const { postdata, siteconfig, preview } = props;
-  console.log(postdata);
 
   const router = useRouter();
   //console.log(router.query.category);
