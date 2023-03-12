@@ -24,7 +24,7 @@ export default function MainArticle(props) {
           )}
 
           <div className="bg-transparent lg:bg-transparent md:bg-transparent bg-stone-900	lg:absolute md:absolute lg:bg-gradient-to-t md:bg-gradient-to-t from-black px-5 pt-8 pb-5 bottom-0 w-full ">
-            <a href="#">
+            <a href={`/post/${data[0].slug.current}`}>
               <h2 className="lg:text-5xl md:text-3xl text-3xl font-bold capitalize text-white lg:text-white md:text-white dark:text-white mb-3">
                 {data[0].title}
               </h2>

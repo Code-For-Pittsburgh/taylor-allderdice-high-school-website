@@ -61,8 +61,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  console.log(props);
 
   return (
     <header className="bg-white dark:bg-black">
@@ -70,7 +71,7 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
@@ -88,16 +89,41 @@ export default function Navbar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12 text-black dark:text-white ">
-          <a href="#" className="text-sm font-semibold leading-6">
-            Blogs
+        <Popover.Group className="hidden lg:flex lg:gap-x-5 text-black dark:text-white text-center ">
+          <a
+            href="/"
+            className="text-sm font-semibold leading-6 text-center
+             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+            
+            ">
+            Home
           </a>
-          <a href="#" className="text-sm font-semibold leading-6">
-            Marketplace
+          <a
+            href="/gallery"
+            className="text-sm font-semibold leading-6 text-center
+             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+            
+            ">
+            Gallery
           </a>
-          <a href="#" className="text-sm font-semibold leading-6">
-            Company
+          <a
+            href="/gallery"
+            className="text-sm font-semibold leading-6 text-center
+             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+            
+            ">
+            About
           </a>
+          {props.data &&
+            props.data.map((item, index) => (
+              <a
+                href={`/${item.slug.current}`}
+                className="text-sm font-semibold leading-6 text-center
+                    py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+                   ">
+                {item.title}
+              </a>
+            ))}
         </Popover.Group>
       </nav>
       <Dialog

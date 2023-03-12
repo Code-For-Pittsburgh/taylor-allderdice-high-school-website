@@ -36,15 +36,15 @@ export default function Layout(props) {
           site_name: props.title
         }}
         twitter={{
-          handle: "@surjithctly",
-          site: "@surjithctly",
+          handle: "Bek_Devv",
+          site: "@Bek",
           cardType: "summary_large_image"
         }}
       />
 
       <div className="antialiased text-gray-800 dark:bg-black dark:text-gray-400 flex flex-col min-h-screen">
         <div className="grow">
-          <Navbar {...props} />
+          <Navbar data={props.data} />
           <div>{children}</div>
         </div>
 

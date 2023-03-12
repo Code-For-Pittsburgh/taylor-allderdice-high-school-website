@@ -9,9 +9,10 @@ import PostList from "@components/postlist";
 import CategoryLabel from "@components/blog/category";
 import RecentHome from "@components/recenthome";
 import MainArticle from "@components/mainhero";
+import { navbarQuery } from "@lib/groq";
 
 export default function Post(props) {
-  const { postdata, siteconfig, preview } = props;
+  const { postdata, siteconfig, preview, navbar } = props;
 
   const router = useRouter();
   //console.log(router.query.category);
@@ -32,7 +33,7 @@ export default function Post(props) {
   return (
     <>
       {posts && siteConfig && (
-        <Layout {...siteConfig}>
+        <Layout {...siteConfig} data={navbar}>
           <NextSeo
             title={`${siteConfig?.title}`}
             description={siteConfig?.description || ""}
@@ -117,21 +118,24 @@ export default function Post(props) {
             <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
               <div
                 className="w-full bg-white sticky top-2
-              dark:bg-black shadow-lg rounded-lg overflow-hidden ring-2 ring-zinc-800">
+              dark:bg-black shadow-lg rounded overflow-hidden ring-1 ring-zinc-800">
                 <div
                   className="
                  ">
                   <div
-                    className="p-4
-                   border-gray-100">
+                    className="p-4 border-b border-zinc-200 dark:border-gray-700
+                   ">
                     <h2 className="text-3xl font-bold text-black dark:text-white">
                       Featured Posts
                     </h2>
                   </div>
-                  <ul className="post-number">
+                  <ul
+                    className="post-number
+                  divide-y divide-zinc-200 dark:divide-gray-700
+                  ">
                     {posts.map((post, index) => (
                       <li
-                        className="ring-1 ring-zinc-800 border-gray-100
+                        className=" ring-inset ring-zinc-800 border-gray-100
                         hover:bg-gray-100 dark:hover:bg-gray-800
                         "
                         key={index}>
@@ -165,6 +169,7 @@ export default function Post(props) {
 export async function getStaticProps({ params, preview = false }) {
   const post = await getClient(preview).fetch(postquery);
   const config = await getClient(preview).fetch(configQuery);
+  const navbarItems = await getClient(preview).fetch(navbarQuery);
 
   // const categories = (await client.fetch(catquery)) || null;
 
@@ -173,6 +178,8 @@ export async function getStaticProps({ params, preview = false }) {
       postdata: post,
       // categories: categories,
       siteconfig: { ...config },
+      navbar: navbarItems,
+
       preview
     },
     revalidate: 10
