@@ -66,9 +66,11 @@ export default function Navbar(props) {
   console.log(props);
 
   return (
-    <header className="bg-white dark:bg-black">
+    <header
+      className="bg-white dark:bg-black 
+    border-b border-gray-200 dark:border-gray-800 mb-10">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
         aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
