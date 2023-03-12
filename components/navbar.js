@@ -118,7 +118,7 @@ export default function Navbar(props) {
             props.data.map((item, index) => (
               <a
                 key={item.slug.current}
-                href={`/${item.slug.current}`}
+                href={`/category/${item.slug.current}`}
                 className="text-sm font-semibold leading-6 text-center
                     py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
                    ">
