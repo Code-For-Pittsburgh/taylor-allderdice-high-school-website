@@ -95,17 +95,92 @@ export default function Post(props) {
           </section> */}
 
           {/* <RecentHome data={posts} /> */}
-          <MainArticle data={posts.slice(0, 1)} />
 
-          <section className="py-20">
-            <div className="container px-4 mx-auto">
-              <div className="flex flex-wrap -mx-4 -mb-4">
-                {posts.slice(1).map((post, index) => (
-                  <PostList key={index} post={post} aspect="square" />
-                ))}
+          <div class="flex flex-row flex-wrap max-w-screen-xl m-auto">
+            <div class="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
+              <div class="flex flex-row flex-wrap -mx-3 mx-auto">
+                <MainArticle data={posts.slice(0, 1)} />
+                <section className="py-20">
+                  <div className="container px-4 mx-auto">
+                    <div className="flex flex-wrap -mx-4 -mb-4">
+                      {posts.slice(1).map((post, index) => (
+                        <PostList
+                          key={index}
+                          post={post}
+                          aspect="square"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
-          </section>
+            <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
+              <div className="w-full bg-white">
+                <div className="mb-6">
+                  <div className="p-4 bg-gray-100">
+                    <h2 className="text-lg font-bold">
+                      Most Popular
+                    </h2>
+                  </div>
+                  <ul className="post-number">
+                    <li className="border-b border-gray-100 hover:bg-gray-50">
+                      <a
+                        className="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                        href="#">
+                        Why the world would end without political
+                        polls
+                      </a>
+                    </li>
+                    <li className="border-b border-gray-100 hover:bg-gray-50">
+                      <a
+                        className="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                        href="#">
+                        Meet The Man Who Designed The Ducati Monster
+                      </a>
+                    </li>
+                    <li className="border-b border-gray-100 hover:bg-gray-50">
+                      <a
+                        className="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                        href="#">
+                        2020 Audi R8 Spyder spy shots release
+                      </a>
+                    </li>
+                    <li className="border-b border-gray-100 hover:bg-gray-50">
+                      <a
+                        className="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                        href="#">
+                        Lamborghini makes Huracán GT3 racer faster for
+                        2019
+                      </a>
+                    </li>
+                    <li className="border-b border-gray-100 hover:bg-gray-50">
+                      <a
+                        className="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                        href="#">
+                        ZF plans $14 billion autonomous vehicle push,
+                        concept van
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="text-sm py-6 sticky top-10">
+                <div className="w-full text-center">
+                  <a className="uppercase" href="#">
+                    Advertisement
+                  </a>
+                  <a href="#">
+                    <img
+                      className="mx-auto"
+                      src="src/img/ads/250.jpg"
+                      alt="advertisement area"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </Layout>
       )}
     </>

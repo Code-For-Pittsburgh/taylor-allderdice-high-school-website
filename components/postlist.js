@@ -16,7 +16,7 @@ export default function PostList({ post, aspect, preloadImage }) {
 
   return (
     <>
-      <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-12">
+      <div className="w-full md:w-1/2 lg:w-1/2 px-4 mb-12">
         <div
           className={
             "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105 aspect-video mb-4"
