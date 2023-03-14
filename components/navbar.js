@@ -19,6 +19,9 @@ import {
   PhoneIcon,
   PlayCircleIcon
 } from "@heroicons/react/20/solid";
+import { navbarQuery } from "@lib/groq";
+import { getClient, usePreviewSubscription } from "@lib/sanity";
+import { useEffect } from "react";
 
 const products = [
   {
@@ -61,16 +64,38 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar(props) {
+async function getNavbar() {
+  try {
+    const navbarItems = await getClient(false)
+      .fetch(navbarQuery)
+      .then(res => {
+        return res;
+      });
+    return navbarItems;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  console.log(props);
+  const [navbar, setNavbar] = useState([]);
+
+  useEffect(() => {
+    getClient(false)
+      .fetch(navbarQuery)
+      .then(res => {
+        setNavbar(res);
+        console.log(res);
+      });
+  }, []);
 
   return (
     <header
       className="bg-white dark:bg-black 
-    border-b border-gray-200 dark:border-gray-800 mb-10">
+    border-b border-gray-200 dark:border-gray-800 lg:mb-4">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8 "
         aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -95,7 +120,7 @@ export default function Navbar(props) {
           <a
             href="/"
             className="text-sm font-semibold leading-6 text-center
-             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+             py-2 px-4 border-transparent hover:border-green-500 hover:text-green-500
             
             ">
             Home
@@ -103,7 +128,7 @@ export default function Navbar(props) {
           <a
             href="/gallery"
             className="text-sm font-semibold leading-6 text-center
-             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+             py-2 px-4 border-transparent hover:border-green-500 hover:text-green-500
             
             ">
             Gallery
@@ -111,18 +136,18 @@ export default function Navbar(props) {
           <a
             href="/gallery"
             className="text-sm font-semibold leading-6 text-center
-             py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+             py-2 px-4 border-transparent hover:border-green-500 hover:text-green-500
             
             ">
             About
           </a>
-          {props.data &&
-            props.data.map((item, index) => (
+          {navbar &&
+            navbar.map((item, index) => (
               <a
                 key={item.slug.current}
                 href={`/category/${item.slug.current}`}
                 className="text-sm font-semibold leading-6 text-center
-                    py-2 px-4 border-b-2 border-transparent hover:border-indigo-500
+                    py-2 px-4 border-transparent hover:border-green-500 hover:text-green-500
                    ">
                 {item.title}
               </a>
@@ -135,7 +160,10 @@ export default function Navbar(props) {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel
+          className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1
+        dark:bg-black dark:text-white
+        sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -155,39 +183,33 @@ export default function Navbar(props) {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...products, ...callsToAction].map(item => (
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                            {item.name}
-                          </Disclosure.Button>
-                        ))}
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
+              <div
+                className="space-y-2 py-6 divide-y divid-1 divide-zinc-900
+              ">
                 <a
                   href="/"
-                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  className="-mx-3 block  py-2 px-3 text-base font-semibold leading-7  hover:text-green-500">
                   Home
                 </a>
                 <a
                   href="/gallery"
-                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  className="-mx-3 block  py-2 px-3 text-base font-semibold leading-7  hover:text-green-500">
                   gallery
                 </a>
                 <a
                   href="/about"
-                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  className="-mx-3 block  py-2 px-3 text-base font-semibold leading-7  hover:text-green-500">
                   About
                 </a>
+                {navbar &&
+                  navbar.map((item, index) => (
+                    <a
+                      key={item.slug.current}
+                      href={`/category/${item.slug.current}`}
+                      className="-mx-3 block  py-2 px-3 text-base font-semibold leading-7  hover:text-green-500">
+                      {item.title}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

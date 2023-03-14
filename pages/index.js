@@ -9,10 +9,9 @@ import PostList from "@components/postlist";
 import CategoryLabel from "@components/blog/category";
 import RecentHome from "@components/recenthome";
 import MainArticle from "@components/mainhero";
-import { navbarQuery } from "@lib/groq";
 
 export default function Post(props) {
-  const { postdata, siteconfig, preview, navbar } = props;
+  const { postdata, siteconfig, preview } = props;
 
   const router = useRouter();
   //console.log(router.query.category);
@@ -33,7 +32,7 @@ export default function Post(props) {
   return (
     <>
       {posts && siteConfig && (
-        <Layout {...siteConfig} data={navbar}>
+        <Layout {...siteConfig}>
           <NextSeo
             title={`${siteConfig?.title}`}
             description={siteConfig?.description || ""}
@@ -100,7 +99,7 @@ export default function Post(props) {
             <div className="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
               <div className="flex flex-row flex-wrap -mx-3 mx-auto">
                 <MainArticle data={posts.slice(0, 1)} />
-                <section className="py-20">
+                <section className="py-10 pb-10">
                   <div className="container px-4 mx-auto">
                     <div className="flex flex-wrap -mx-4 -mb-4">
                       {posts.slice(1).map((post, index) => (
@@ -169,7 +168,6 @@ export default function Post(props) {
 export async function getStaticProps({ params, preview = false }) {
   const post = await getClient(preview).fetch(postquery);
   const config = await getClient(preview).fetch(configQuery);
-  const navbarItems = await getClient(preview).fetch(navbarQuery);
 
   // const categories = (await client.fetch(catquery)) || null;
 
@@ -178,7 +176,6 @@ export async function getStaticProps({ params, preview = false }) {
       postdata: post,
       // categories: categories,
       siteconfig: { ...config },
-      navbar: navbarItems,
 
       preview
     },

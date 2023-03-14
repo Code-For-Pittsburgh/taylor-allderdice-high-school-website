@@ -6,7 +6,11 @@ import { parseISO, format } from "date-fns";
 import { PhotographIcon } from "@heroicons/react/outline";
 import CategoryLabel from "@components/blog/category";
 
-export default function PostList({ post, aspect, preloadImage }) {
+export default function ArchivePostList({
+  post,
+  aspect,
+  preloadImage
+}) {
   const imageProps = post?.mainImage
     ? GetImage(post.mainImage)
     : null;
@@ -16,12 +20,10 @@ export default function PostList({ post, aspect, preloadImage }) {
 
   return (
     <>
-      <div
-        className="w-full md:w-1/2 lg:w-1/2 px-8	relative ring-1 dark:ring-zinc-900 ring-zinc-100
-         ">
+      <div className="w-full md:w-1/2 lg:w-1/3 px-8 mb-12	relative ">
         <div
           className={
-            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 aspect-video mb-4 mt-10"
+            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105 aspect-video mb-4"
           }>
           <Link href={`/post/${post.slug.current}`}>
             <a>
@@ -37,7 +39,7 @@ export default function PostList({ post, aspect, preloadImage }) {
                   layout="fill"
                   objectFit="cover"
                   priority={preloadImage ? true : false}
-                  className="transition-all hover:scale-110 transorm duration-500 ease-in-out"
+                  className="transition-all"
                 />
               ) : (
                 <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -61,11 +63,11 @@ export default function PostList({ post, aspect, preloadImage }) {
           href={`/post/${post.slug.current}`}>
           {post.title}
         </a>
-        <p className="mb-20 text-base md:text-lg text-white-400 font-medium">
+        <p className="mb-10 text-base md:text-lg text-white-400 font-medium">
           {post.excerpt}
         </p>
         <a
-          className="absolute bottom-5 inline-flex items-center text-base md:text-lg text-green-500 hover:text-green-600 font-semibold"
+          className="absolute bottom-0 inline-flex items-center text-base md:text-lg text-green-500 hover:text-green-600 font-semibold"
           href={`/post/${post.slug.current}`}>
           <span className="mr-3">Read More</span>
           <svg

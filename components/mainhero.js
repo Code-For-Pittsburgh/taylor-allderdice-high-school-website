@@ -16,14 +16,15 @@ export default function MainArticle(props) {
           {imageProps && (
             <a href={`/post/${data[0].slug.current}`}>
               <img
-                className="max-w-full w-full mx-auto h-auto"
+                className="max-w-full w-full mx-auto h-auto transition duration-300 ease-in-out hover:scale-110 hover:opacity-75 "
                 src={imageProps.src}
-                alt="Image description"
+                loading="lazy"
+                alt={data[0].title}
               />
             </a>
           )}
 
-          <div className="bg-transparent lg:bg-transparent md:bg-transparent bg-stone-900	lg:absolute md:absolute lg:bg-gradient-to-t md:bg-gradient-to-t from-black px-5 pt-8 pb-5 bottom-0 w-full ">
+          <div className="bg-transparent lg:bg-transparent md:bg-transparent bg-black	lg:absolute md:absolute lg:bg-gradient-to-t md:bg-gradient-to-t from-black px-5 pt-8 pb-5 bottom-0 w-full ">
             <a href={`/post/${data[0].slug.current}`}>
               <h2 className="lg:text-5xl md:text-3xl text-3xl font-bold capitalize text-white lg:text-white md:text-white dark:text-white mb-3">
                 {data[0].title}

@@ -13,16 +13,6 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-        maxLength: 96
-      },
-      validation: Rule => Rule.required()
-    },
-    {
       name: "excerpt",
       title: "Excerpt",
       description:
@@ -71,11 +61,6 @@ export default {
       name: "publishedAt",
       title: "Published at",
       type: "datetime"
-    },
-    {
-      name: "body",
-      title: "Body",
-      type: "blockContent"
     }
   ],
 

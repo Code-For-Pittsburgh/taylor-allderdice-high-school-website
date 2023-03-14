@@ -1,6 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Layout from "@components/layout";
 import Container from "@components/container";
@@ -11,7 +8,7 @@ import { getClient, usePreviewSubscription } from "@lib/sanity";
 // import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
-import PostList from "@components/postlist";
+import ArchivePostList from "@components/archiveposts";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -66,7 +63,7 @@ export default function Post(props) {
 
             <div className="flex mt-20 flex-wrap -mx-4 mb-12 md:mb-20">
               {posts.map(post => (
-                <PostList
+                <ArchivePostList
                   key={post._id}
                   post={post}
                   aspect="square"
