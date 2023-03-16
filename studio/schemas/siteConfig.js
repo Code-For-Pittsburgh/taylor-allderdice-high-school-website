@@ -15,6 +15,7 @@ export default {
         collapsed: false
       }
     },
+
     {
       title: "Social Media",
       name: "social"
@@ -98,6 +99,22 @@ export default {
             invert: false // Boolean to allow any value that does NOT match pattern
           }
         )
+    },
+
+    {
+      title: "Navigation",
+      name: "navigation",
+      type: "array",
+      options: {
+        collapsible: true,
+        collapsed: false
+      },
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }]
+        }
+      ]
     },
 
     {

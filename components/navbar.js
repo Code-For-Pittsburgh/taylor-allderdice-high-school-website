@@ -22,7 +22,9 @@ import {
 import { navbarQuery } from "@lib/groq";
 import { getClient, usePreviewSubscription } from "@lib/sanity";
 import { useEffect } from "react";
-
+import Image from "next/image";
+import GetImage from "@utils/getImage";
+import Link from "next/link";
 const products = [
   {
     name: "Analytics",
@@ -77,18 +79,11 @@ async function getNavbar() {
   }
 }
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navbar, setNavbar] = useState([]);
 
-  useEffect(() => {
-    getClient(false)
-      .fetch(navbarQuery)
-      .then(res => {
-        setNavbar(res);
-        console.log(res);
-      });
-  }, []);
+  const navigation = props.navigation;
 
   return (
     <header
@@ -97,16 +92,34 @@ export default function Navbar() {
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8 "
         aria-label="Global">
-        <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
+        <Link href="/">
+          <a className="w-16 dark:hidden">
+            {props.logo ? (
+              <Image
+                {...GetImage(props.logo)}
+                alt="Logo"
+                sizes="(max-width: 640px) 100vw, 200px"
+                priority={true}
+              />
+            ) : (
+              <span className="block text-left">BekDev</span>
+            )}
           </a>
-        </div>
+        </Link>
+        <Link href="/">
+          <a className="hidden w-16 dark:block">
+            {props.logoalt ? (
+              <Image
+                {...GetImage(props.logoalt)}
+                alt="Logo"
+                sizes="(max-width: 640px) 100vw, 200px"
+                priority={true}
+              />
+            ) : (
+              <span className="block text-left">BekDev</span>
+            )}
+          </a>
+        </Link>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -141,8 +154,8 @@ export default function Navbar() {
             ">
             About
           </a>
-          {navbar &&
-            navbar.map((item, index) => (
+          {navigation &&
+            navigation.map((item, index) => (
               <a
                 key={item.slug.current}
                 href={`/category/${item.slug.current}`}
@@ -201,8 +214,8 @@ export default function Navbar() {
                   className="-mx-3 block  py-2 px-3 text-base font-semibold leading-7  hover:text-green-500">
                   About
                 </a>
-                {navbar &&
-                  navbar.map((item, index) => (
+                {navigation &&
+                  navigation.map((item, index) => (
                     <a
                       key={item.slug.current}
                       href={`/category/${item.slug.current}`}

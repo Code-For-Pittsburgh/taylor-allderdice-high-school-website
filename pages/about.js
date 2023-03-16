@@ -64,6 +64,7 @@ export async function getStaticProps({ params, preview = false }) {
   //console.log(params);
   const authors = await getClient(preview).fetch(authorsquery);
   const config = await getClient(preview).fetch(configQuery);
+
   return {
     props: {
       authors: authors,

@@ -14,6 +14,7 @@ import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
 import { NextSeo } from "next-seo";
 import PostList from "@components/postlist";
+import ArchivePostList from "@components/archiveposts";
 
 import {
   singlequery,
@@ -82,7 +83,7 @@ export default function Post(props) {
             </div>
             <div className="flex mt-20 flex-wrap -mx-4 mb-12 md:mb-20">
               {posts.map(post => (
-                <PostList
+                <ArchivePostList
                   key={post._id}
                   post={post}
                   aspect="square"

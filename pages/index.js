@@ -9,6 +9,8 @@ import PostList from "@components/postlist";
 import CategoryLabel from "@components/blog/category";
 import RecentHome from "@components/recenthome";
 import MainArticle from "@components/mainhero";
+import ArchivePostList from "@components/archiveposts";
+import HorizontalPost from "@components/PostListHorizontal";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -29,6 +31,13 @@ export default function Post(props) {
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
     : "none";
+
+  const filteredData = posts.filter(item => {
+    return item.categories.some(
+      category => category.title === siteConfig.navigation[0].title
+    );
+  });
+
   return (
     <>
       {posts && siteConfig && (
@@ -102,9 +111,9 @@ export default function Post(props) {
                 <section className="py-10 pb-10">
                   <div className="container px-4 mx-auto">
                     <div className="flex flex-wrap -mx-4 -mb-4">
-                      {posts.slice(1).map((post, index) => (
+                      {posts.slice(1, 5).map((post, index) => (
                         <PostList
-                          key={index}
+                          key={post._id}
                           post={post}
                           aspect="square"
                         />
@@ -117,7 +126,7 @@ export default function Post(props) {
             <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
               <div
                 className="w-full bg-white sticky top-2
-              dark:bg-black shadow-lg rounded overflow-hidden ring-1 ring-zinc-800">
+              dark:bg-black shadow-lg rounded overflow-hidden ">
                 <div
                   className="
                  ">
@@ -128,34 +137,57 @@ export default function Post(props) {
                       Featured Posts
                     </h2>
                   </div>
-                  <ul
-                    className="post-number
-                  divide-y divide-zinc-200 dark:divide-gray-700
-                  ">
-                    {posts.map((post, index) => (
-                      <li
-                        className=" ring-inset ring-zinc-800 border-gray-100
-                        hover:bg-gray-100 dark:hover:bg-gray-800
-                        "
-                        key={index}>
-                        <a
-                          className="block p-4"
-                          href={`/post/${post.slug.current}`}>
-                          <div className="flex flex-row flex-wrap items-center">
-                            <div className="w-full">
-                              <h1
-                                className="text-sm 
-                              dark:text-gray-100
-                              ">
-                                {post.title}
-                              </h1>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-wrap mx-4 divide-y gap-10 divide-zinc-900">
+                    {posts
+                      .filter(post =>
+                        post.categories.some(
+                          category =>
+                            category.title ===
+                            siteConfig.navigation[0].title
+                        )
+                      )
+                      .map((post, index) => (
+                        <HorizontalPost
+                          key={post._id}
+                          post={post}
+                          aspect="square"
+                        />
+                      ))}
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
+            <div className="flex-shrink max-w-full w-full  overflow-hidden">
+              <div className="flex flex-row flex-wrap -mx-3 mx-auto">
+                <section className="py-10 pb-10">
+                  <div className="container px-4 mx-auto">
+                    <h1>
+                      <span className="text-5xl ml-4 font-bold text-black dark:text-white">
+                        {siteconfig.navigation[0].title}
+                      </span>
+                    </h1>
+                    <div className="flex flex-wrap mx-4 mt-10 divide-y divide-zinc-900">
+                      {posts
+                        .filter(post =>
+                          post.categories.some(
+                            category =>
+                              category.title ===
+                              siteConfig.navigation[0].title
+                          )
+                        )
+                        .map((post, index) => (
+                          <HorizontalPost
+                            key={post._id}
+                            post={post}
+                            aspect="rec"
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
