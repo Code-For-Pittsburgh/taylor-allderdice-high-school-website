@@ -8,17 +8,20 @@ export default function AuthorCard({ author }) {
     <div className="px-8 py-8 mt-3 text-gray-500 rounded-2xl dark:text-gray-400 w-full">
       <div className="flex items-start sm:space-x-6 sm:flex-nowrap">
         <div className="relative lg:w-1/4 md:w-24 sm:w-24 h-40 ">
-          {imageProps && (
-            <Image
-              src={imageProps.src}
-              loader={imageProps.loader}
-              blurDataURL={imageProps.blurDataURL}
-              objectFit="cover"
-              alt={author.name}
-              placeholder="blur"
-              layout="fill"
-            />
-          )}
+          <a href={`/author/${author.slug.current}`}>
+            {imageProps && (
+              <Image
+                src={imageProps.src}
+                loader={imageProps.loader}
+                blurDataURL={imageProps.blurDataURL}
+                objectFit="cover"
+                alt={author.name}
+                placeholder="blur"
+                layout="fill"
+                className="rounded-lg"
+              />
+            )}
+          </a>
         </div>
         <div className="sm:w-full md:w-full lg:w-3/4">
           <div className="mb-3">
