@@ -176,7 +176,7 @@ export default function Post(props) {
                   ).length > 2 && (
                     <section className=" pb-10">
                       <div className="container mx-auto">
-                        <div className="p-4 border-b-1 border-zinc-900 dark:border-gray-700 ">
+                        <div className="p-4 border-b-1 border-gray-200 dark:border-gray-700 ">
                           <a
                             href={`/category/${siteConfig.navigation[index].slug.current}`}
                             className="hover:text-underline">
