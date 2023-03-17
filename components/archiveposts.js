@@ -27,7 +27,7 @@ export default function ArchivePostList({
           "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 aspect-video mb-4 mt-10"
         }>
         <Link href={`/post/${post.slug.current}`}>
-          <a>
+          <a href={`/post/${post.slug.current}`}>
             {imageProps ? (
               <Image
                 src={imageProps.src}
