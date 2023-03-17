@@ -73,11 +73,11 @@ export default function Post(props) {
             }}
           />
           <Container>
-            <h1 className="text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-              Blogs is with {categorydata.title} tags
-            </h1>
-            <div className="text-center">
-              <p className="mt-2 text-lg">
+            <div className="max-w-3xl mb-10">
+              <h3 className="mb-4 text-3xl md:text-3xl font-bold tracking-tighte text-green-400">
+                {categorydata.title.toUpperCase()}
+              </h3>
+              <p className="text-lg md:text-lg text-coolGray-500 font-medium">
                 {categorydata.description}
               </p>
             </div>
