@@ -18,7 +18,7 @@ const ThemeSwitch = () => {
   return (
     <button
       type="button"
-      className="flex items-center justify-center w-10 h-10 focus:outline-none    "
+      className="flex items-center justify-center w-10 h-10"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
       {theme === "dark" ? (
         <SunIcon className="h-6 w-6 text-yellow-500" />
