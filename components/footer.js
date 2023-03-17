@@ -58,7 +58,7 @@ export default function Footer(props) {
           <div className="w-full md:w-1/2">
             <div className="flex flex-wrap md:justify-end -mx-5">
               {props.youtube && (
-                <div className="px-5">
+                <div className="px-5 flex items-center justify-between">
                   <a
                     className="inline-blcock text-black hover:text-red-600 dark:text-white dark:hover:text-red-600"
                     href={props.youtube}>
@@ -75,7 +75,7 @@ export default function Footer(props) {
               )}
 
               {props.Twitter && (
-                <div className="px-5">
+                <div className="px-5 flex items-center justify-between">
                   <a
                     className="inline-block text-black hover:text-blue-400 dark:text-white dark:hover:text-blue-400"
                     href={props.Twitter}>
@@ -92,9 +92,9 @@ export default function Footer(props) {
               )}
 
               {props.Instagram && (
-                <div className="px-5">
+                <div className="px-5 flex items-center justify-between">
                   <a
-                    className="inline-block text-black hover:text-purple-500 dark:text-white dark:hover:text-purple-500	"
+                    className="inline-block text-black hover:text-purple-500 dark:text-white dark:hover:text-purple-500"
                     href={props.Instagram}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -107,6 +107,11 @@ export default function Footer(props) {
                   </a>
                 </div>
               )}
+              <div className="px-2">
+                <div className="inline-block text-black hover:text-purple-500 dark:text-white dark:hover:text-purple-500	">
+                  <ThemeSwitch />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -40,15 +40,15 @@ export default {
       title: "Main image",
       type: "image",
       fields: [
-        // {
-        //   name: "caption",
-        //   type: "string",
-        //   title: "Image caption",
-        //   description: "Appears below image.",
-        //   options: {
-        //     isHighlighted: true
-        //   }
-        // },
+        {
+          name: "caption",
+          type: "string",
+          title: "Image caption",
+          description: "Appears below image.",
+          options: {
+            isHighlighted: true
+          }
+        },
         {
           name: "alt",
           type: "string",

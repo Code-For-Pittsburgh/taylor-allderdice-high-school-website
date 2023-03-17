@@ -126,32 +126,37 @@ export default function Post(props) {
                   )}
 
                   <div className="max-w-screen-md p-2">
-                    <div className="flex justify-start">
-                      <CategoryLabel categories={post.categories} />
+                    <div className="flex justify-start px-3">
+                      <CategoryLabel
+                        size="large"
+                        categories={post.categories}
+                      />
                     </div>
 
-                    <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-left lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+                    <h1 className="mt-2 px-3 mb-3 text-3xl tracking-tight text-left lg:leading-snug text-brand-primary font-bold lg:text-5xl dark:text-white">
                       {post.title}
                     </h1>
 
-                    <div className="flex justify-left mt-3 space-x-3 text-gray-500 ">
+                    <div className="flex justify-left mt-3 space-x-3 px-3 text-gray-500 ">
                       <div className="flex items-center gap-3">
-                        <div className="relative flex-shrink-0 w-10 h-10">
-                          {AuthorimageProps && (
-                            <Image
-                              src={AuthorimageProps.src}
-                              blurDataURL={
-                                AuthorimageProps.blurDataURL
-                              }
-                              loader={AuthorimageProps.loader}
-                              objectFit="cover"
-                              alt={post?.author?.name}
-                              placeholder="blur"
-                              layout="fill"
-                              className="rounded-full"
-                            />
-                          )}
-                        </div>
+                        {/* <div className="relative flex-shrink-0 w-10 h-10">
+                          <a href={post?.author?.slug.current}>
+                            {AuthorimageProps && (
+                              <Image
+                                src={AuthorimageProps.src}
+                                blurDataURL={
+                                  AuthorimageProps.blurDataURL
+                                }
+                                loader={AuthorimageProps.loader}
+                                objectFit="cover"
+                                alt={post?.author?.name}
+                                placeholder="blur"
+                                layout="fill"
+                                className="rounded-full"
+                              />
+                            )}
+                          </a>
+                        </div> */}
                         <div>
                           <p className="text-gray-800 dark:text-gray-400">
                             {post.author.name}
@@ -180,7 +185,7 @@ export default function Post(props) {
 
                   <div className="container px-4 mx-auto">
                     <div className="flex flex-wrap ">
-                      <div className="my-3 prose prose-base dark:prose-invert prose-a:text-blue-500">
+                      <div className="my-3 prose prose-base  dark:prose-invert prose-p:text-black dark:prose-p:text-white prose-a:text-blue-500">
                         {post.body && (
                           <PortableText value={post.body} />
                         )}
@@ -188,6 +193,21 @@ export default function Post(props) {
                     </div>
                   </div>
                 </section>
+                {post.author && <AuthorCard author={post.author} />}
+
+                <div className="flex justify-center mt-7 mb-7">
+                  <Link href="/">
+                    <a className="px-5 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
+                      ← View all posts
+                    </a>
+                  </Link>
+                  <Link
+                    href={`/author/${post?.author?.slug?.current}`}>
+                    <a className="px-5 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
+                      More from the author →
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last pt-0 ">
@@ -198,7 +218,7 @@ export default function Post(props) {
                   className="
                  ">
                   <div
-                    className="p-4 border-b border-zinc-200 dark:border-gray-700
+                    className="p-4 border-b border-zinc-200 dark:border-zinc-900
                    ">
                     <h2 className="text-3xl font-bold text-black dark:text-white">
                       Related
@@ -225,9 +245,13 @@ export default function Post(props) {
 
 const MainImage = ({ image }) => {
   return (
-    <div className="">
-      <Image {...GetImage(image)} alt={image.alt || "Thumbnail"} />
-      <figcaption className="text-center ">
+    <div className="max-h-100 overflow-hidden mb-10">
+      <Image
+        {...GetImage(image)}
+        className="max-w-full w-full mx-auto h-auto transition duration-300 ease-in-out hover:scale-110 hover:opacity-75 "
+        alt={image.alt || "Thumbnail"}
+      />
+      <figcaption className="text-left mx-5 ">
         {image.caption && (
           <span className="text-sm italic text-gray-600 dark:text-gray-400">
             {image.caption}
