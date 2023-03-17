@@ -44,7 +44,7 @@ export default {
     {
       name: "copyright",
       type: "string",
-      title: "Copyright Name",
+      title: "Name",
       description: "Enter company name to appear in footer after ©"
     },
 
@@ -132,43 +132,35 @@ export default {
     },
 
     {
-      name: "social",
-      type: "array",
-      title: "Social Links",
-      description: "Enter your Social Media URLs",
-      validation: Rule => Rule.unique(),
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              type: "string",
-              name: "media",
-              title: "Choose Social Media",
-              options: {
-                list: [
-                  { title: "Twitter", value: "twitter" },
-                  { title: "Facebook", value: "facebook" },
-                  { title: "Instagram", value: "instagram" },
-                  { title: "Linkedin", value: "linkedin" },
-                  { title: "Youtube", value: "youtube" }
-                ]
-              }
-            },
-            {
-              type: "url",
-              name: "url",
-              title: "Full Profile URL"
-            }
-          ],
-          preview: {
-            select: {
-              title: "media",
-              subtitle: "url"
-            }
-          }
-        }
-      ]
+      name: "Instagram",
+      type: "string",
+      title: "Instagram",
+      description: "Enter your Instagram url",
+      options: {
+        collapsible: true,
+        collapsed: false
+      }
+    },
+    {
+      name: "youtube",
+      type: "string",
+      title: "Youtube",
+      description: "Enter your youtube url",
+      options: {
+        collapsible: true,
+        collapsed: false
+      }
+    },
+
+    {
+      name: "Twitter",
+      type: "string",
+      title: "Twitter",
+      description: "Enter your Twitter url",
+      options: {
+        collapsible: true,
+        collapsed: false
+      }
     },
 
     {
@@ -186,7 +178,7 @@ export default {
       type: "image",
       title: "Open Graph Image",
       description:
-        "Image for sharing previews on Facebook, Twitter etc.",
+        "Image for sharing previews on youtube, Twitter etc.",
       fieldset: "metadata"
     }
   ]

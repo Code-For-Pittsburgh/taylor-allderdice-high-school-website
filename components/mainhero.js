@@ -30,7 +30,9 @@ export default function MainArticle(props) {
                 {data[0].title}
               </h2>
             </a>
-            <p className="text-sm font-bold md:text-white capitalize text-white lg:text-white dark:text-white mb-3">
+            <p
+              className="text-sm  capitalize text-gray-100
+            lg:text-gray-100 dark:text-gray-100 mb-3">
               {data[0].excerpt}
             </p>
 

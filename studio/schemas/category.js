@@ -6,7 +6,8 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required()
     },
     {
       name: "slug",
@@ -18,24 +19,12 @@ export default {
       },
       validation: Rule => Rule.required()
     },
-    {
-      name: "color",
-      title: "Color",
-      type: "string",
-      description: "Color of the category",
-      options: {
-        list: [
-          { title: "Green", value: "green" },
-          { title: "Blue", value: "blue" },
-          { title: "Purple", value: "purple" },
-          { title: "Orange", value: "orange" }
-        ]
-      }
-    },
+
     {
       name: "description",
       title: "Description",
-      type: "text"
+      type: "text",
+      validation: Rule => Rule.required()
     }
   ]
 };

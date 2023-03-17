@@ -18,8 +18,6 @@ export default function HorizontalPost({
     ? GetImage(post.author.image)
     : null;
 
-  console.log(aspect);
-
   return (
     <>
       <div
@@ -36,7 +34,7 @@ export default function HorizontalPost({
               {post.title}
             </a>
 
-            <div className="flex flex-row mt-3 font-serif italic md:justify-start">
+            <div className="flex flex-row mt-3 md:justify-start">
               <div className="leading-tight font-regular subtitle-1">
                 {post.author.name}
                 <br></br>
@@ -44,9 +42,7 @@ export default function HorizontalPost({
               </div>
             </div>
           </div>
-          <div
-            className="block w-1/2"
-            href="/article/how-to-remove-bing-from-google-chrome-microsoft-edge">
+          <div className="block w-1/2">
             <div
               className={
                 "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 aspect-sqaure mb-4 h-full"

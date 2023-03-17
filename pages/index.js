@@ -161,15 +161,15 @@ export default function Post(props) {
 
           <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
             <div className="flex-shrink max-w-full w-full  overflow-hidden">
-              <div className="flex flex-row flex-wrap -mx-3 mx-auto">
+              <div className="flex flex-row flex-wrap mx-auto">
                 <section className="py-10 pb-10">
                   <div className="container px-4 mx-auto">
-                    <h1>
-                      <span className="text-5xl ml-4 font-bold text-black dark:text-white">
-                        {siteconfig.navigation[0].title}
-                      </span>
-                    </h1>
-                    <div className="flex flex-wrap mx-4 mt-10 divide-y divide-zinc-900">
+                    <div className="p-4 border-b border-zinc-200 dark:border-gray-700 ">
+                      <h2 className="text-3xl font-bold text-black dark:text-white">
+                        {siteConfig.navigation[0].title}
+                      </h2>
+                    </div>
+                    <div className="flex flex-wrap mx-4 mt-10 divide-y divide-zinc-900 lg:divide-none gap-y-5">
                       {posts
                         .filter(post =>
                           post.categories.some(

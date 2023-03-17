@@ -1,6 +1,6 @@
 // import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { SunIcon } from "@heroicons/react/24/outline";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 const ThemeSwitch = () => {
   //   const [mounted, setMounted] = useState(false);
@@ -16,17 +16,16 @@ const ThemeSwitch = () => {
   //   }
 
   return (
-    <div className="inline-flex items-center">
-      <SunIcon className="w-4 h-4 mr-2" />
-      <select
-        name="themeSwitch"
-        value={theme}
-        onChange={e => setTheme(e.target.value)}>
-        <option value="system">System</option>
-        <option value="dark">Dark</option>
-        <option value="light">Bright</option>
-      </select>
-    </div>
+    <button
+      type="button"
+      className="flex items-center justify-center w-10 h-10 focus:outline-none    "
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      {theme === "dark" ? (
+        <SunIcon className="h-6 w-6 text-yellow-400" />
+      ) : (
+        <MoonIcon className="h-6 w-6 text-yellow-400" />
+      )}
+    </button>
   );
 };
 

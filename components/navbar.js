@@ -1,88 +1,14 @@
-import { Fragment, useState } from "react";
-import {
-  Dialog,
-  Disclosure,
-  Popover,
-  Transition
-} from "@headlessui/react";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon
-} from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon
-} from "@heroicons/react/20/solid";
-import { navbarQuery } from "@lib/groq";
-import { getClient, usePreviewSubscription } from "@lib/sanity";
-import { useEffect } from "react";
+import { useState } from "react";
+import { Dialog, Popover } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import ThemeSwitch from "./themeSwitch";
+
 import Image from "next/image";
 import GetImage from "@utils/getImage";
 import Link from "next/link";
-const products = [
-  {
-    name: "Analytics",
-    description: "Get a better understanding of your traffic",
-    href: "#",
-    icon: ChartPieIcon
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers",
-    href: "#",
-    icon: CursorArrowRaysIcon
-  },
-  {
-    name: "Security",
-    description: "Your customers’ data will be safe and secure",
-    href: "#",
-    icon: FingerPrintIcon
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon
-  }
-];
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon }
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-async function getNavbar() {
-  try {
-    const navbarItems = await getClient(false)
-      .fetch(navbarQuery)
-      .then(res => {
-        return res;
-      });
-    return navbarItems;
-  } catch (err) {
-    console.log(err);
-  }
-}
 
 export default function Navbar(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [navbar, setNavbar] = useState([]);
-
   const navigation = props.navigation;
 
   return (
@@ -93,7 +19,7 @@ export default function Navbar(props) {
         className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8 "
         aria-label="Global">
         <Link href="/">
-          <a className="w-16 dark:hidden">
+          <a className="w-10 dark:hidden">
             {props.logo ? (
               <Image
                 {...GetImage(props.logo)}
@@ -107,7 +33,7 @@ export default function Navbar(props) {
           </a>
         </Link>
         <Link href="/">
-          <a className="hidden w-16 dark:block">
+          <a className="hidden w-10 dark:block">
             {props.logoalt ? (
               <Image
                 {...GetImage(props.logoalt)}
@@ -147,7 +73,7 @@ export default function Navbar(props) {
             Gallery
           </a>
           <a
-            href="/gallery"
+            href="/about"
             className="text-sm font-semibold leading-6 text-center
              py-2 px-4 border-transparent hover:border-green-500 hover:text-green-500
             
@@ -165,6 +91,7 @@ export default function Navbar(props) {
                 {item.title}
               </a>
             ))}
+          <ThemeSwitch />
         </Popover.Group>
       </nav>
       <Dialog
@@ -178,14 +105,34 @@ export default function Navbar(props) {
         dark:bg-black dark:text-white
         sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </a>
+            <Link href="/">
+              <a className="w-10 dark:hidden">
+                {props.logo ? (
+                  <Image
+                    {...GetImage(props.logo)}
+                    alt="Logo"
+                    sizes="(max-width: 640px) 100vw, 200px"
+                    priority={true}
+                  />
+                ) : (
+                  <span className="block text-left">BekDev</span>
+                )}
+              </a>
+            </Link>
+            <Link href="/">
+              <a className="hidden w-10 dark:block">
+                {props.logoalt ? (
+                  <Image
+                    {...GetImage(props.logoalt)}
+                    alt="Logo"
+                    sizes="(max-width: 640px) 100vw, 200px"
+                    priority={true}
+                  />
+                ) : (
+                  <span className="block text-left">BekDev</span>
+                )}
+              </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -195,7 +142,7 @@ export default function Navbar(props) {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6 divide-y divide-zinc-900">
               <div
                 className="space-y-2 py-6 divide-y divid-1 divide-zinc-900
               ">
@@ -223,6 +170,12 @@ export default function Navbar(props) {
                       {item.title}
                     </a>
                   ))}
+              </div>
+              <div
+                className="
+                absolute bottom-0 left-0 right-0
+                ">
+                <ThemeSwitch />
               </div>
             </div>
           </div>
