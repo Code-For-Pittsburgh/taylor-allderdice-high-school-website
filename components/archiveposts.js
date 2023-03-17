@@ -54,7 +54,7 @@ export default function ArchivePostList({
         <CategoryLabel categories={post.categories} />
       </div>
       <a
-        href="/"
+        href={`/author/${post.author.slug.current}`}
         className="mb-2 hover:underline text-coolGray-500 font-medium">
         {post.author.name} •{" "}
         {format(parseISO(post.publishedAt), "MMMM do, yyyy")}

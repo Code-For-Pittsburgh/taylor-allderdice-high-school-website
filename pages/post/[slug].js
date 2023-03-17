@@ -195,15 +195,15 @@ export default function Post(props) {
                 </section>
                 {post.author && <AuthorCard author={post.author} />}
 
-                <div className="flex justify-center mt-7 mb-7">
+                <div className="flex w-full justify-between mt-7 mb-7">
                   <Link href="/">
-                    <a className="px-5 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
+                    <a className="px-2 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
                       ← View all posts
                     </a>
                   </Link>
                   <Link
                     href={`/author/${post?.author?.slug?.current}`}>
-                    <a className="px-5 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
+                    <a className="px-2 py-2 text-base font-bold rounded-full text-green-500 bg-brand-secondary/20 ">
                       More from the author →
                     </a>
                   </Link>

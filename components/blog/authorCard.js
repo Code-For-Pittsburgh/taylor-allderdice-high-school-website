@@ -5,7 +5,7 @@ import GetImage from "@utils/getImage";
 export default function AuthorCard({ author }) {
   const imageProps = author?.image ? GetImage(author.image) : null;
   return (
-    <div className="px-8 py-8 mt-3 text-gray-500 rounded-2xl dark:text-gray-400">
+    <div className="px-8 py-8 mt-3 text-gray-500 rounded-2xl dark:text-gray-400 w-full">
       <div className="flex items-start sm:space-x-6 sm:flex-nowrap">
         <div className="relative lg:w-1/4 md:w-24 sm:w-24 h-40 ">
           {imageProps && (
