@@ -15,8 +15,42 @@ export default function Footer(props) {
         <div className="flex flex-wrap items-center py-12 md:pb-32">
           <div className="w-full md:w-1/2 mb-6 md:mb-0">
             <h1>
-              <span className="text-2xl font-bold text-coolGray-900 dark:text-white">
-                {props.title}
+              <span className="text-2xl font-bold text-coolGray-900 dark:text-white flex row align-center gap-2">
+                <Link href="/">
+                  <a className="w-10 dark:hidden">
+                    {props.logo ? (
+                      <Image
+                        {...GetImage(props.logo)}
+                        alt="Logo"
+                        sizes="(max-width: 640px) 100vw, 200px"
+                        priority={true}
+                      />
+                    ) : (
+                      <span className="block text-left">
+                        Code For Pittsburgh
+                      </span>
+                    )}
+                  </a>
+                </Link>
+                <Link href="/">
+                  <a className="hidden w-10 dark:block">
+                    {props.logoalt ? (
+                      <Image
+                        {...GetImage(props.logoalt)}
+                        alt="Logo"
+                        sizes="(max-width: 640px) 100vw, 200px"
+                        priority={true}
+                      />
+                    ) : (
+                      <h1 className="block text-left text-3xl">
+                        Code For Pittsburgh
+                      </h1>
+                    )}
+                  </a>
+                </Link>
+                <h1 className="block text-left text-3xl">
+                  {props.title}
+                </h1>
               </span>
             </h1>
             <p className="text-coolGray-400 ">{props.description}</p>
