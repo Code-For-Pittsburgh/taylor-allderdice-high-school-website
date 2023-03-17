@@ -128,7 +128,7 @@ export default function Post(props) {
                 </section>
               </div>
             </div>
-            <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
+            <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last pt-0 ">
               <div
                 className="w-full bg-white sticky top-2
               dark:bg-black rounded overflow-hidden ">
@@ -142,15 +142,12 @@ export default function Post(props) {
                       Featured Posts
                     </h2>
                   </div>
-                  <div className="flex flex-wrap mx-4 divide-y gap-10 divide-zinc-900">
+                  <div
+                    className="flex flex-wrap mx-4 divide-y gap-5 divide-gray-200
+                   dark:divide-zinc-900">
                     {posts
-                      .filter(post =>
-                        post.categories.some(
-                          category =>
-                            category.title ===
-                            siteConfig.navigation[0].title
-                        )
-                      )
+                      .filter(post => post.featured === true)
+                      .slice(0, 3)
                       .map((post, index) => (
                         <HorizontalPost
                           key={post._id}
