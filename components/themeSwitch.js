@@ -23,7 +23,7 @@ const ThemeSwitch = () => {
       {theme === "dark" ? (
         <SunIcon className="h-6 w-6 text-yellow-500" />
       ) : (
-        <MoonIcon className="h-6 w-6 text-black" />
+        <MoonIcon className="h-6 w-6 text-purple-500" />
       )}
     </button>
   );
