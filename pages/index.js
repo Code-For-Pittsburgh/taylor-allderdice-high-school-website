@@ -131,7 +131,7 @@ export default function Post(props) {
             <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
               <div
                 className="w-full bg-white sticky top-2
-              dark:bg-blackrounded overflow-hidden ">
+              dark:bg-black rounded overflow-hidden ">
                 <div
                   className="
                  ">

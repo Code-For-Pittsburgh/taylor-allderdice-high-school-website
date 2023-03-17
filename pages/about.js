@@ -30,24 +30,26 @@ export default function About({ authors, siteconfig }) {
                 <div
                   key={authors.id}
                   className="w-full md:w-1/2 lg:w-1/3 mb-14">
-                  <div className="max-w-xs mx-auto">
-                    <div
-                      className="relative mb-5 h-72 overflow-hidden rounded-lg 
+                  <a href={`/author/${author.slug.current}`}>
+                    <div className="max-w-xs mx-auto">
+                      <div
+                        className="relative mb-5 h-72 overflow-hidden rounded-lg 
                     ">
-                      <img
-                        className="relative h-72 w-full object-cover rounded-lg hover:opacity-75 transition duration-150 ease-in-out hover:scale-110"
-                        {...imgprops}
-                        alt={author.name || " "}
-                        style={{ zIndex: 1 }}
-                      />
+                        <img
+                          className="relative h-72 w-full object-cover rounded-lg hover:opacity-75 transition duration-150 ease-in-out hover:scale-110"
+                          {...imgprops}
+                          alt={author.name || " "}
+                          style={{ zIndex: 1 }}
+                        />
+                      </div>
+                      <h3 className="mb-2 text-xl md:text-3xl leading-tight font-semibold text-black dark:text-white">
+                        {author.name}
+                      </h3>
+                      <h1 className="text-lg font-medium text-green-500">
+                        {(author.role + "").toUpperCase()}
+                      </h1>
                     </div>
-                    <h3 className="mb-2 text-xl md:text-3xl leading-tight font-semibold text-black dark:text-white">
-                      {author.name}
-                    </h3>
-                    <h1 className="text-lg font-medium text-green-500">
-                      {(author.role + "").toUpperCase()}
-                    </h1>
-                  </div>
+                  </a>
                 </div>
               );
             })}

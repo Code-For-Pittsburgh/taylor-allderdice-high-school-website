@@ -65,7 +65,7 @@ export default function ArchivePostList({
         {post.title}
       </a>
       <p
-        className={`mb-20 text-base md:text-lg text-gray-500 font-medium dark:text-gray-900  `}>
+        className={`mb-20 text-base md:text-lg text-gray-500 font-medium dark:text-gray-400  `}>
         {post.excerpt}
       </p>
       <a
