@@ -75,7 +75,7 @@ export default function Post(props) {
           <Container>
             <div className="max-w-3xl mb-10">
               <h3 className="mb-4 text-3xl md:text-3xl font-bold tracking-tighte text-green-400">
-                {categorydata.title.toUpperCase()}
+                #{categorydata.title.toUpperCase()}
               </h3>
               <p className="text-lg md:text-lg text-coolGray-500 font-medium">
                 {categorydata.description}
