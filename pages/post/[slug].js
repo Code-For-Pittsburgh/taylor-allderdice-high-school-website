@@ -224,7 +224,7 @@ export default function Post(props) {
                       Related
                     </h2>
                   </div>
-                  <div className="flex flex-wrap mx-4 divide-y gap-10 divide-zinc-900">
+                  <div className="flex flex-wrap mx-4 divide-y gap-10 dark:divide-zinc-900 divide-gray-200">
                     {relatedPosts.related.slice(0, 3).map(post => (
                       <HorizontalPost
                         key={post._id}
