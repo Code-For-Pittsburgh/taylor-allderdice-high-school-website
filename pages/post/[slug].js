@@ -120,7 +120,7 @@ export default function Post(props) {
           <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
             <div className="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
               <div className="flex flex-row flex-wrap mx-auto">
-                <section className="py-10 pb-10">
+                <section className="py-5 pb-10">
                   {post?.mainImage && (
                     <MainImage image={post.mainImage} />
                   )}
@@ -218,7 +218,7 @@ export default function Post(props) {
                   className="
                  ">
                   <div
-                    className="p-4 border-b border-zinc-200 dark:border-zinc-900
+                    className="p-5 border-b border-zinc-200 dark:border-zinc-900
                    ">
                     <h2 className="text-3xl font-bold text-black dark:text-white">
                       Related
