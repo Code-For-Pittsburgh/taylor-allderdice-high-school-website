@@ -11,6 +11,11 @@ import RecentHome from "@components/recenthome";
 import MainArticle from "@components/mainhero";
 import ArchivePostList from "@components/archiveposts";
 import HorizontalPost from "@components/PostListHorizontal";
+import {
+  SunIcon,
+  MoonIcon,
+  ArrowRightIcon
+} from "@heroicons/react/24/outline";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -126,7 +131,7 @@ export default function Post(props) {
             <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pb-8 order-last lg:order-last p-5 pt-0 ">
               <div
                 className="w-full bg-white sticky top-2
-              dark:bg-black shadow-lg rounded overflow-hidden ">
+              dark:bg-blackrounded overflow-hidden ">
                 <div
                   className="
                  ">
@@ -160,36 +165,56 @@ export default function Post(props) {
           </div>
 
           <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
-            <div className="flex-shrink max-w-full w-full  overflow-hidden">
-              <div className="flex flex-row flex-wrap mx-auto">
-                <section className="py-10 pb-10">
-                  <div className="container px-4 mx-auto">
-                    <div className="p-4 border-b border-zinc-200 dark:border-gray-700 ">
-                      <h2 className="text-3xl font-bold text-black dark:text-white">
-                        {siteConfig.navigation[0].title}
-                      </h2>
-                    </div>
-                    <div className="flex flex-wrap mx-4 mt-10 divide-y divide-zinc-900 lg:divide-none gap-y-5">
-                      {posts
-                        .filter(post =>
-                          post.categories.some(
-                            category =>
-                              category.title ===
-                              siteConfig.navigation[0].title
-                          )
-                        )
-                        .map((post, index) => (
-                          <HorizontalPost
-                            key={post._id}
-                            post={post}
-                            aspect="rec"
-                          />
-                        ))}
-                    </div>
-                  </div>
-                </section>
+            {siteConfig.navigation.map((nav, index) => (
+              <div
+                key={index}
+                className="flex-shrink max-w-full w-full  overflow-hidden">
+                <div className="flex flex-row flex-wrap mx-auto">
+                  {posts.filter(post =>
+                    post.categories.some(
+                      category =>
+                        category.title ===
+                        siteConfig.navigation[index].title
+                    )
+                  ).length > 2 && (
+                    <section className=" pb-10">
+                      <div className="container mx-auto">
+                        <div className="p-4 border-b-1 border-zinc-900 dark:border-gray-700 ">
+                          <a
+                            href={`/category/${siteConfig.navigation[index].slug.current}`}
+                            className="hover:text-underline">
+                            <span
+                              className="text-5xl font-bold text-black dark:text-white 
+                            ">
+                              {siteConfig.navigation[index].title}
+                              <ArrowRightIcon className="inline-block w-10 h-10 ml-2 text-black dark:text-white font-bold" />
+                            </span>
+                          </a>
+                        </div>
+                        <div className="flex flex-wrap mx-4 divide-y divide-zinc-900 lg:divide-none">
+                          {posts
+                            .filter(post =>
+                              post.categories.some(
+                                category =>
+                                  category.title ===
+                                  siteConfig.navigation[index].title
+                              )
+                            )
+                            .slice(0, 3)
+                            .map((post, index) => (
+                              <ArchivePostList
+                                key={post._id}
+                                post={post}
+                                aspect="hidden"
+                              />
+                            ))}
+                        </div>
+                      </div>
+                    </section>
+                  )}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </Layout>
       )}

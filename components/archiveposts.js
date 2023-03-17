@@ -20,7 +20,7 @@ export default function ArchivePostList({
 
   return (
     <div
-      className="w-full md:w-1/2 lg:w-1/3 px-8	relative ring-1 dark:ring-zinc-900 ring-zinc-100
+      className="w-full md:w-1/2 lg:w-1/3	relative px-2 mb-4 md:mb-0
      ">
       <div
         className={
@@ -64,7 +64,8 @@ export default function ArchivePostList({
         href={`/post/${post.slug.current}`}>
         {post.title}
       </a>
-      <p className="mb-20 text-base md:text-lg text-white-400 font-medium">
+      <p
+        className={`mb-20 text-base md:text-lg text-gray-500 font-medium dark:text-gray-900  `}>
         {post.excerpt}
       </p>
       <a
