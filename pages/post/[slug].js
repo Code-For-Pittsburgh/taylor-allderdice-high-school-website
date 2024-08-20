@@ -52,9 +52,7 @@ export default function Post(props) {
     ? GetImage(post.author.image)
     : null;
 
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : "none";
+
 
   return (
     <>
@@ -70,7 +68,7 @@ export default function Post(props) {
               description: post.excerpt || "",
               images: [
                 {
-                  url: GetImage(post?.mainImage).src || ogimage,
+                  url: GetImage(post?.mainImage)?.src || GetImage(siteConfig?.openGraphImage)?.src || "none",
                   width: 800,
                   height: 600,
                   alt: ""
