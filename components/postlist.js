@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cx } from "@utils/all";
 import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
-import { PhotographIcon } from "@heroicons/react/outline";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 import CategoryLabel from "@components/blog/category";
 
 export default function PostList({ post, aspect, preloadImage }) {
@@ -40,7 +40,7 @@ export default function PostList({ post, aspect, preloadImage }) {
               />
             ) : (
               <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <PhotographIcon />
+                <PhotoIcon />
               </span>
             )}
           </a>

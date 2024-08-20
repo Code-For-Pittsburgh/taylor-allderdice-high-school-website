@@ -37,11 +37,11 @@ export default function Post(props) {
     ? GetImage(siteConfig?.openGraphImage).src
     : "none";
 
-  const filteredData = posts.filter(item => {
-    return item.categories.some(
-      category => category.title === siteConfig.navigation[0].title
-    );
-  });
+  // const filteredData = posts.filter(item => {
+  //   return item.categories.some(
+  //     category => category.title === siteConfig.navigation[0].title
+  //   );
+  // });
 
   return (
     <>
@@ -168,7 +168,7 @@ export default function Post(props) {
                 className="flex-shrink max-w-full w-full  overflow-hidden">
                 <div className="flex flex-row flex-wrap mx-auto">
                   {posts.filter(post =>
-                    post.categories.some(
+                    post?.categories?.some(
                       category =>
                         category.title ===
                         siteConfig.navigation[index].title
@@ -191,7 +191,7 @@ export default function Post(props) {
                         <div className="flex flex-wrap mx-4 divide-y divide-zinc-900 lg:divide-none">
                           {posts
                             .filter(post =>
-                              post.categories.some(
+                              post?.categories?.some(
                                 category =>
                                   category.title ===
                                   siteConfig.navigation[index].title

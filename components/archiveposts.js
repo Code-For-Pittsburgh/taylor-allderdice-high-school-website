@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cx } from "@utils/all";
 import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
-import { PhotographIcon } from "@heroicons/react/outline";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 import CategoryLabel from "@components/blog/category";
 
 export default function ArchivePostList({
@@ -44,7 +44,7 @@ export default function ArchivePostList({
               />
             ) : (
               <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <PhotographIcon />
+                <PhotoIcon />
               </span>
             )}
           </a>
@@ -54,9 +54,10 @@ export default function ArchivePostList({
         <CategoryLabel categories={post.categories} />
       </div>
       <a
-        href={`/author/${post.author.slug.current}`}
+        // make href the author page if it exists, otherwise stay on the same page
+        href={post?.author?.slug?.current ? `/author/${post.author.slug.current}` : '#'}
         className="mb-2 hover:underline text-coolGray-500 font-medium">
-        {post.author.name} •{" "}
+        {post?.author?.name} •{" "}
         {format(parseISO(post.publishedAt), "MMMM do, yyyy")}
       </a>
       <a

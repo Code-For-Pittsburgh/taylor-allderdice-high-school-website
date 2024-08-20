@@ -52,9 +52,7 @@ export default function Post(props) {
     ? GetImage(post.author.image)
     : null;
 
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : "none";
+
 
   return (
     <>
@@ -70,7 +68,7 @@ export default function Post(props) {
               description: post.excerpt || "",
               images: [
                 {
-                  url: GetImage(post?.mainImage).src || ogimage,
+                  url: GetImage(post?.mainImage)?.src || GetImage(siteConfig?.openGraphImage)?.src || "none",
                   width: 800,
                   height: 600,
                   alt: ""
@@ -159,7 +157,7 @@ export default function Post(props) {
                         </div> */}
                         <div>
                           <p className="text-gray-800 dark:text-gray-400">
-                            {post.author.name}
+                            {post?.author?.name}
                           </p>
                           <div className="flex items-center space-x-2 text-sm">
                             <time
