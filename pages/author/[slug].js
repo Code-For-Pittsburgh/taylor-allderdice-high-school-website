@@ -111,7 +111,7 @@ export default function Post(props) {
                     ">
                       <img
                         className="relative h-72 w-full object-cover rounded-lg hover:opacity-75 transition duration-150 ease-in-out hover:scale-110"
-                        src={AuthorimageProps.src}
+                        src={AuthorimageProps?.src || null}
                         alt={categorydata.title}
                         style={{ zIndex: 1 }}
                       />
