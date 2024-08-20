@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function About({ authors, siteconfig }) {
-  const imageProps = authors?.image ? GetImage(author.image) : null;
 
   return (
     <Layout {...siteconfig}>
@@ -25,7 +24,6 @@ export default function About({ authors, siteconfig }) {
 
           <div className="flex flex-wrap  -mb-14">
             {authors.map(author => {
-              const { ...imgprops } = GetImage(author?.image);
               return (
                 <div
                   key={authors.id}
@@ -37,7 +35,7 @@ export default function About({ authors, siteconfig }) {
                     ">
                         <img
                           className="relative h-72 w-full object-cover rounded-lg hover:opacity-75 transition duration-150 ease-in-out hover:scale-110"
-                          {...imgprops}
+                          {...(GetImage(author?.image) || null)}
                           alt={author.name || " "}
                           style={{ zIndex: 1 }}
                         />
