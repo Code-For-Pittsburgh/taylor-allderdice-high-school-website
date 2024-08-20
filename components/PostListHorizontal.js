@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cx } from "@utils/all";
 import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
-import { PhotographIcon } from "@heroicons/react/outline";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 import CategoryLabel from "@components/blog/category";
 
 export default function HorizontalPost({
@@ -53,7 +53,6 @@ export default function HorizontalPost({
             <div
               className={`relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 aspect-video mb-4 min-h-full	
                  } `}>
-              <a href={`/post/${post.slug.current}`}>
                 <Link href={`/post/${post.slug.current}`}>
                   {imageProps ? (
                     <Image
@@ -74,11 +73,10 @@ export default function HorizontalPost({
                     />
                   ) : (
                     <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                      <PhotographIcon />
+                      <PhotoIcon />
                     </span>
                   )}
                 </Link>
-              </a>
             </div>
           </div>
         </div>

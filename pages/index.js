@@ -21,6 +21,7 @@ export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
 
   const router = useRouter();
+  
   //console.log(router.query.category);
 
   const { data: posts } = usePreviewSubscription(postquery, {
@@ -118,7 +119,7 @@ export default function Post(props) {
                     <div className="flex flex-wrap -mx-4 -mb-4">
                       {posts.slice(1, 5).map((post, index) => (
                         <PostList
-                          key={post._id}
+                          key={"first" + post?._id + index}
                           post={post}
                           aspect="square"
                         />
@@ -147,10 +148,10 @@ export default function Post(props) {
                    dark:divide-zinc-900">
                     {posts
                       .filter(post => post.featured === true)
-                      .slice(0, 3)
+                      .slice(0, 4)
                       .map((post, index) => (
                         <HorizontalPost
-                          key={post._id}
+                          key={"second" + post?._id + index}
                           post={post}
                           aspect="square"
                         />
@@ -164,7 +165,7 @@ export default function Post(props) {
           <div className="flex flex-row flex-wrap max-w-screen-xl m-auto">
             {siteConfig.navigation.map((nav, index) => (
               <div
-                key={index}
+                key={"third" + index + "nav"}
                 className="flex-shrink max-w-full w-full  overflow-hidden">
                 <div className="flex flex-row flex-wrap mx-auto">
                   {posts.filter(post =>
@@ -200,7 +201,7 @@ export default function Post(props) {
                             .slice(0, 3)
                             .map((post, index) => (
                               <ArchivePostList
-                                key={post._id}
+                                key={"archive" + post._id + index}
                                 post={post}
                                 aspect="hidden"
                               />
