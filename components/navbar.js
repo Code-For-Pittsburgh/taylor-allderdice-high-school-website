@@ -94,7 +94,7 @@ export default function Navbar(props) {
           <ThemeSwitch />
         </Popover.Group>
       </nav>
-      <Dialog
+      {/* <Dialog
         as="div"
         className="lg:hidden"
         open={mobileMenuOpen}
@@ -180,7 +180,7 @@ export default function Navbar(props) {
             </div>
           </div>
         </Dialog.Panel>
-      </Dialog>
+      </Dialog> */}
     </header>
   );
 }
