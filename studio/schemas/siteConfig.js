@@ -118,6 +118,22 @@ export default {
     },
 
     {
+      title: "Author Order",
+      name: "authororder",
+      type: "array",
+      options: {
+        collapsible: true,
+        collapsed: false
+      },
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "author" }]
+        }
+      ]
+    },
+
+    {
       name: "phone",
       type: "string",
       title: "Support Phone"
