@@ -6,7 +6,9 @@ import GetImage from "@utils/getImage";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function About({ authors, siteconfig }) {
+export default function About({ siteconfig }) {
+
+  const authors = siteconfig.authororder;
 
   return (
     <Layout {...siteconfig}>
