@@ -3,12 +3,5 @@
     "rewrites": [{
         "source": "/studio/(.*)",
         "destination": "/studio/index.html"
-    }],
-    "redirects": [
-        {
-          "source": "/",
-          "destination": "https://www.youtube.com/watch?v=xvFZjo5PgG0",
-          "permanent": false
-        }
-    ]
+    }]
 }
